@@ -1,0 +1,18 @@
+.BoardList {
+  margin-top: 30px;
+
+  .create_board_button {
+	background-color: var(--background-color-create-board);
+	color: var(--color-main);
+	font-weight: 500;
+	width: 25%;
+	border-radius: 3px;
+	height: 96px;
+	padding: 4px 8px;
+
+	&:hover {
+	  background-color: var(--background-color-create-board-hovered);
+	  transition: 0.25s;
+	}
+  }
+}
