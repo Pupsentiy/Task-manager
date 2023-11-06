@@ -1,8 +1,8 @@
-import { AddBoardModal } from "components/AddBoardModal";
-import { BoardList } from "components/BoardList";
-import { Text } from "components/ui/Text";
+import { AddBoardModal } from "@/components/AddBoardModal";
+import { BoardList } from "@/components/Board";
+import { Text } from "@/components/ui/Text";
+import { cls } from "@/utils/helpers/cls/cls";
 import { useCallback, useState } from "react";
-import { cls } from "utils/helpers";
 import styles from "./BoardsPage.module.scss";
 
 interface BoardsPageProps {

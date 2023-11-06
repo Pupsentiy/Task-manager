@@ -1,5 +1,5 @@
+import { cls } from "@/utils/helpers/cls/cls.ts";
 import { type ChangeEvent, type SelectHTMLAttributes } from "react";
-import { cls } from "utils/helpers";
 import styles from "./Select.module.scss";
 
 type HTMLInputProps = Omit<

@@ -1,12 +1,8 @@
+import { cls } from "@/utils/helpers/cls/cls.ts";
 import { memo } from "react";
-import { cls } from "utils/helpers";
 import styles from "./Text.module.scss";
 
-export enum TextAlign {
-  RIGHT = "right",
-  LEFT = "left",
-  CENTER = "center",
-}
+export type TextAlign = "right" | "left" | "center";
 
 export type TextSize = "xs" | "s" | "m" | "l";
 
@@ -36,14 +32,7 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
 };
 
 export const Text = memo(
-  ({
-    className,
-    title,
-    text,
-    align = TextAlign.LEFT,
-    size = "m",
-    bold,
-  }: TextProps) => {
+  ({ className, title, text, align = "left", size = "m", bold }: TextProps) => {
     const HeaderTag = mapSizeToHeaderTag[size];
     const sizeClass = mapSizeToClass[size];
 

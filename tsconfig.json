@@ -10,15 +10,21 @@
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
+    "outDir": "./dist/",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src",
-    "type": [
-      "node"
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "vite/client"
     ],
     "typeRoots": [
       "node_modules/@types"
@@ -31,7 +37,7 @@
   },
   "include": [
     "src",
-    "src/vite-env.d.ts"
+    "vite-env.d.ts"
   ],
   "references": [
     {

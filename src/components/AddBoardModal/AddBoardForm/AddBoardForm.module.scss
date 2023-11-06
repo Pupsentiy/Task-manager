@@ -1,3 +1,46 @@
 .AddBoardForm {
+  .form {
+	margin-top: 12px;
+	display: flex;
+	flex-direction: column;
 
+	.wrapper_label {
+	  display: flex;
+	  line-height: normal;
+
+	  span {
+		margin-left: 3px;
+		color: var(--icon-accent);
+	  }
+
+
+	}
+
+	.input_name_board {
+	  background-color: var(--background-color-input);
+	  box-shadow: inset 0 0 0 2px var(--border-color-input);
+	  border-radius: 3px;
+	  padding: 8px 12px;
+	  border: none;
+	  color: var(--color-main);
+	  margin-top: 2px;
+	  font-size: 14px;
+	  width: 100%;
+
+	  &:focus {
+		box-shadow: inset 0 0 0 2px var(--border-color-input-focused);
+	  }
+
+	  &:hover {
+		background-color: var(--background-color-input-hovered);
+		box-shadow: inset 0 0 0 2px #a6c5e229;
+	  }
+
+
+	}
+
+	.create {
+	  margin-top: 12px;
+	}
+  }
 }

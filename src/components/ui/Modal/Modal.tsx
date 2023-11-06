@@ -1,5 +1,5 @@
+import { cls } from "@/utils/helpers/cls/cls.ts";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { cls } from "utils/helpers";
 import { Portal } from "../Portal";
 import styles from "./Modal.module.scss";
 
@@ -44,6 +44,8 @@ export const Modal = (props: ModalProps) => {
       window.addEventListener("keydown", onKeyDown);
     }
     return () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       clearTimeout(timeRef.current as NodeJS.Timeout);
       window.removeEventListener("keydown", onKeyDown);
     };

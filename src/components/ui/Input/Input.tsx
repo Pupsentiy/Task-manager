@@ -1,5 +1,5 @@
+import { cls } from "@/utils/helpers/cls/cls.ts";
 import { type ChangeEvent, type InputHTMLAttributes, memo } from "react";
-import { cls } from "utils/helpers";
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,

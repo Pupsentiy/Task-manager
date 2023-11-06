@@ -1,5 +1,5 @@
-import { Text } from "components/ui/Text";
-import { cls } from "utils/helpers";
+import { Text } from "@/components/ui/Text";
+import { cls } from "@/utils/helpers/cls/cls";
 import styles from "./NotFoundPage.module.scss";
 
 interface NotFoundPageProps {

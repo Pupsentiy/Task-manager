@@ -1,3 +1,46 @@
 .Button {
   cursor: pointer;
+  padding: 6px 12px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.disabled {
+  background-color: var(--background-disabled);
+  color: var(--color-text-disabled);
+}
+
+
+.normal {
+
+}
+
+.neutral {
+  color: var(--color-main);
+  background-color: var(--background-neutral);
+  border-radius: 3px;
+
+  &:hover {
+	background-color: var(--background-neutral-hovered);
+  }
+
+  &:active {
+	background-color: var(--background-neutral-pressed);
+  }
+}
+
+.filled {
+  color: var(--color-innverse);
+  background-color: var(--background-color-bold);
+  border-radius: 3px;
+
+  &:hover {
+	background-color: var(--background-color-bold-hovered);
+  }
+
+  &:active {
+	background-color: var(--background-color-bold-pressed);
+  }
 }
