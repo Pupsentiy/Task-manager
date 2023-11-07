@@ -1,3 +1,4 @@
-export { Check } from "./Check.tsx";
-export { Ellipsis } from "./Ellipsis.tsx";
-export { Close } from "./Close.tsx";
+export { TaskIcon } from "./TaskIcon.tsx";
+export { CheckIcon } from "./CheckIcon.tsx";
+export { EllipsisIcon } from "./EllipsisIcon.tsx";
+export { CloseIcon } from "./CloseIcon.tsx";

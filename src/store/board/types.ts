@@ -1,5 +1,5 @@
-import { BoardCreateSchema } from "@/store/boardCreate/types";
-import { Action } from "@reduxjs/toolkit";
+import { Action } from "redux";
+import { BoardCreateSchema } from "../boardCreate/types";
 
 export interface BoardSchema {
   boards: BoardCreateSchema[];
@@ -16,4 +16,4 @@ export interface SetAddBoard extends Action {
   payload: { title: string; backdrop: string };
 }
 
-export type AllActionType = SetAddBoard;
+export type BoardActionType = SetAddBoard;

@@ -1,7 +1,9 @@
 import { AddBoardModal } from "@/components/AddBoardModal";
 import { BoardList } from "@/components/Board";
 import { Text } from "@/components/ui/Text";
+import { resetStateAction } from "@/store/boardCreate/boardCreateActions.ts";
 import { cls } from "@/utils/helpers/cls/cls";
+import { useAppDispatch } from "@/utils/hooks";
 import { useCallback, useState } from "react";
 import styles from "./BoardsPage.module.scss";
 
@@ -11,10 +13,12 @@ interface BoardsPageProps {
 
 const BoardsPage = ({ className }: BoardsPageProps) => {
   const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
-  }, []);
+    dispatch(resetStateAction());
+  }, [dispatch]);
 
   const onShowModal = useCallback(() => {
     setIsAuthModal(true);

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/Button";
-import { Ellipsis } from "@/components/ui/Icons";
+import { EllipsisIcon } from "@/components/ui/Icons";
 import { Text } from "@/components/ui/Text";
-import { backgroundColor } from "@/utils/const/constants.ts";
+import { BackgroundColor } from "@/utils/const/constants.ts";
 import { cls } from "@/utils/helpers/cls/cls.ts";
 import { memo } from "react";
 import styles from "./BackdropList.module.scss";
@@ -12,18 +12,18 @@ interface BackdropListProps {
 }
 
 export const BackdropList = memo(({ className }: BackdropListProps) => {
-  const backgroundSlice = backgroundColor.slice(0, 5);
+  const backgroundSlice = BackgroundColor.slice(0, 5);
   return (
     <div className={cls([styles.BackdropList, className])}>
       <Text text={"Фон"} size={"xs"} bold />
       <ul>
-        {Boolean(backgroundColor) &&
+        {Boolean(BackgroundColor) &&
           backgroundSlice.map(({ id, color }) => (
             <BackdropListItem key={id} color={color} />
           ))}
         <Button className={styles.more} color={"neutral"}>
           <span>
-            <Ellipsis />
+            <EllipsisIcon />
           </span>
         </Button>
       </ul>

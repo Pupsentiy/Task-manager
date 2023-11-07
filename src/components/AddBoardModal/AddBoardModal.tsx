@@ -1,6 +1,6 @@
 import { BackdropList } from "@/components/BackgroundList";
 import { Button } from "@/components/ui/Button";
-import { Close } from "@/components/ui/Icons";
+import { CloseIcon } from "@/components/ui/Icons";
 import { Modal } from "@/components/ui/Modal";
 import { Text } from "@/components/ui/Text";
 import { cls } from "@/utils/helpers/cls/cls";
@@ -30,7 +30,7 @@ export const AddBoardModal = memo(
             className={styles.title_modal}
           />
           <Button className={styles.button_close} onClick={onClose}>
-            <Close className={styles.icon_close} />
+            <CloseIcon className={styles.icon_close} />
           </Button>
         </div>
         <BackdropList />

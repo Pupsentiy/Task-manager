@@ -1,4 +1,4 @@
-export const backgroundColor = [
+export const BackgroundColor = [
   { id: 0, color: "#0079bf" },
   { id: 1, color: "#d29034" },
   { id: 2, color: "#519839" },
