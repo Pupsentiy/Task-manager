@@ -35,7 +35,6 @@ export const AddBoardForm = memo(
       dispatch(resetStateAction());
       onClose?.();
     };
-
     return (
       <div className={cls([styles.AddBoardForm, className])}>
         <form className={styles.form}>
@@ -54,9 +53,10 @@ export const AddBoardForm = memo(
           <Button
             type={"submit"}
             fullWidth
-            className={styles.create}
+            className={cls([styles.create], { disabled: Boolean(!title) })}
             onClick={addBoard}
             color={"filled"}
+            disabled={!title}
           >
             Создать
           </Button>

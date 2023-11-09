@@ -3,13 +3,9 @@
   padding: 6px 12px;
 }
 
+
 .fullWidth {
   width: 100%;
-}
-
-.disabled {
-  background-color: var(--background-disabled);
-  color: var(--color-text-disabled);
 }
 
 
@@ -43,4 +39,10 @@
   &:active {
 	background-color: var(--background-color-bold-pressed);
   }
+}
+
+.disabled {
+  background-color: var(--background-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
 }

@@ -7,6 +7,7 @@ import { cls } from "@/utils/helpers/cls/cls";
 import { memo } from "react";
 import { AddBoardForm } from "./AddBoardForm";
 import styles from "./AddBoardModal.module.scss";
+import { PresentationBoard } from "./PresentationBoard";
 
 interface AddBoardModalProps {
   className?: string;
@@ -33,6 +34,7 @@ export const AddBoardModal = memo(
             <CloseIcon className={styles.icon_close} />
           </Button>
         </div>
+        <PresentationBoard />
         <BackdropList />
         <AddBoardForm onClose={onClose} />
       </Modal>
