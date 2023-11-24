@@ -1,5 +1,5 @@
 import { Loader } from "@/components/ui/Loader";
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import { memo } from "react";
 import styles from "./PageLoader.module.scss";
 

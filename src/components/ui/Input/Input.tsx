@@ -1,5 +1,12 @@
-import { cls } from "@/utils/helpers/cls/cls.ts";
-import { type ChangeEvent, type InputHTMLAttributes, memo } from "react";
+import { cls } from "@/utils/helpers";
+import {
+  type ChangeEvent,
+  type InputHTMLAttributes,
+  memo,
+  useEffect,
+  useRef,
+} from "react";
+import styles from "./Input.module.scss";
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -10,10 +17,26 @@ interface InputProps extends HTMLInputProps {
   className?: string;
   value?: string;
   onChange?: (value: string) => void;
+  autofocus?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
-  const { className, type = "text", value, onChange, ...otherProps } = props;
+  const ref = useRef<HTMLInputElement>(null);
+  const {
+    className,
+    type = "text",
+    value,
+    onChange,
+    placeholder,
+    autofocus,
+    ...otherProps
+  } = props;
+
+  useEffect(() => {
+    if (autofocus) {
+      ref.current?.focus();
+    }
+  }, [autofocus]);
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
@@ -21,9 +44,11 @@ export const Input = memo((props: InputProps) => {
 
   return (
     <input
-      className={cls([className])}
+      className={cls([styles.Input, className])}
+      ref={ref}
       type={type}
       value={value}
+      placeholder={placeholder}
       onChange={onChangeHandler}
       {...otherProps}
     />

@@ -9,4 +9,9 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
   },
+  css: {
+    modules: {
+      generateScopedName: "[name]_[local]_[hash:base64:4]",
+    },
+  },
 });

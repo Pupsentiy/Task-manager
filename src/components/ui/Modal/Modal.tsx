@@ -1,4 +1,4 @@
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Portal } from "../Portal";
 import styles from "./Modal.module.scss";
@@ -8,13 +8,23 @@ interface ModalProps {
   children: React.ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
+  left?: number;
+  top?: number;
 }
 
 const ANIMATION_DELAY = 300;
 export const Modal = (props: ModalProps) => {
-  const { className, children, isOpen, onClose } = props;
+  const { className, children, isOpen, onClose, lazy, left, top } = props;
   const [isClosing, setIsClosing] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const closeHandler = useCallback(() => {
     if (onClose) {
@@ -51,20 +61,28 @@ export const Modal = (props: ModalProps) => {
     };
   }, [isOpen, onKeyDown]);
 
+  if (lazy && !isMounted) {
+    return null;
+  }
+
   return (
     <Portal>
-      <div
+      <section
         className={cls([styles.Modal, className], {
           [styles.opened]: Boolean(isOpen),
           [styles.isClosing]: Boolean(isClosing),
         })}
       >
         <div className={styles.overlay} onClick={closeHandler}>
-          <div className={styles.content} onClick={onContentClick}>
+          <div
+            className={styles.content}
+            onClick={onContentClick}
+            style={{ left: left, top: top }}
+          >
             {children}
           </div>
         </div>
-      </div>
+      </section>
     </Portal>
   );
 };

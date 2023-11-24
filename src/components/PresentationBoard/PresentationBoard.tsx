@@ -1,5 +1,5 @@
 import { TaskIcon } from "@/components/ui/Icons";
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import { useTypedSelector } from "@/utils/hooks";
 import { memo } from "react";
 import styles from "./PresentationBoard.module.scss";

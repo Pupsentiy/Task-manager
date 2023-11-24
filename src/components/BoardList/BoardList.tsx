@@ -1,9 +1,9 @@
-import { BoardListItem } from "@/components/Board/BoardList/BoardListItem/BoardListItem.tsx";
 import { Button } from "@/components/ui/Button";
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import { useTypedSelector } from "@/utils/hooks";
 import { memo } from "react";
 import styles from "./BoardList.module.scss";
+import { BoardListItem } from "./BoardListItem/BoardListItem.tsx";
 
 interface BoardListProps {
   className?: string;

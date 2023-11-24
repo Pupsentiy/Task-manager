@@ -1,0 +1,41 @@
+.ModalHeader {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  text-align: center;
+  padding: 4px 8px;
+
+  .title_modal {
+	grid-column: 1 / span 3;
+	grid-row: 1;
+	padding: 0 32px;
+	white-space: nowrap;
+  }
+
+  .button_close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	grid-column: 3;
+	grid-row: 1;
+	width: 32px;
+	height: 32px;
+	padding: 6px;
+	border-radius: 8px;
+
+	&:hover {
+	  background-color: #a6c5e229;
+	}
+
+	&:active {
+	  background-color: #bfdbf847;
+	}
+
+	svg {
+	  width: 14px;
+	  height: 14px;
+	  fill: var(--color-main);
+	}
+  }
+
+}

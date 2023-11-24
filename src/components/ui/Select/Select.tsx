@@ -1,4 +1,4 @@
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import { type ChangeEvent, type SelectHTMLAttributes } from "react";
 import styles from "./Select.module.scss";
 

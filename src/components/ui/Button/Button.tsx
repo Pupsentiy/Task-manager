@@ -1,4 +1,4 @@
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import {
   type ButtonHTMLAttributes,
   ForwardedRef,
@@ -7,7 +7,7 @@ import {
 } from "react";
 import styles from "./Button.module.scss";
 
-export type ButtonColor = "normal" | "neutral" | "filled";
+export type ButtonColor = "primary" | "transparent" | "dark";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -24,14 +24,14 @@ export const Button = forwardRef(
       children,
       disabled,
       type = "button",
+      color = "transparent",
       fullWidth,
-      color = "normal",
       ...otherProps
     } = props;
     return (
       <button
         type={type}
-        className={cls([styles.Button, className, styles[color]], {
+        className={cls([styles.Button, styles[color], className], {
           fullWidth: Boolean(fullWidth),
           disabled: Boolean(disabled),
         })}

@@ -6,7 +6,7 @@ import {
   addTitleBoardAction,
   resetStateAction,
 } from "@/store/boardCreate/boardCreateActions.ts";
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import { useAppDispatch, useTypedSelector } from "@/utils/hooks";
 import { FormEvent, memo, useCallback } from "react";
 import styles from "./AddBoardForm.module.scss";
@@ -37,7 +37,7 @@ export const AddBoardForm = memo(
     };
     return (
       <div className={cls([styles.AddBoardForm, className])}>
-        <form className={styles.form}>
+        <form action={"?"} className={styles.form}>
           <label>
             <div className={styles.wrapper_label}>
               <Text text={"Заголовок доски"} size={"xs"} bold />
@@ -47,16 +47,17 @@ export const AddBoardForm = memo(
               id={"Board title"}
               className={styles.input_name_board}
               value={title}
+              autofocus={!title}
               onChange={addTitleBoard}
             />
           </label>
           <Button
             type={"submit"}
             fullWidth
-            className={cls([styles.create], { disabled: Boolean(!title) })}
+            className={cls([styles.create])}
             onClick={addBoard}
-            color={"filled"}
             disabled={!title}
+            color={"primary"}
           >
             Создать
           </Button>

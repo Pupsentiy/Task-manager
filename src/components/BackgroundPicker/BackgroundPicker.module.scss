@@ -1,9 +1,7 @@
-.BackdropList {
-  margin-top: 12px;
-
-  ul {
+.BackgroundPicker {
+  .wrapper {
 	display: flex;
-	justify-content: space-between;
+	align-items: flex-end;
 
 	.more {
 	  width: 40px;
@@ -19,4 +17,6 @@
 	  }
 	}
   }
+
+
 }

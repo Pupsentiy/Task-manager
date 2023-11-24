@@ -1,4 +1,4 @@
-import { cls } from "@/utils/helpers/cls/cls";
+import { cls } from "@/utils/helpers";
 import styles from "./BoardDetailsPage.module.scss";
 
 interface BoardDetailsPageProps {

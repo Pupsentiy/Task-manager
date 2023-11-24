@@ -1,4 +1,4 @@
-import { cls } from "@/utils/helpers/cls/cls.ts";
+import { cls } from "@/utils/helpers";
 import { memo } from "react";
 import styles from "./Text.module.scss";
 

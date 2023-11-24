@@ -1,8 +1,9 @@
 import { AddBoardModal } from "@/components/AddBoardModal";
-import { BoardList } from "@/components/Board";
+import { BoardBackgroundModal } from "@/components/BoardBackgroundModal";
+import { BoardList } from "@/components/BoardList";
 import { Text } from "@/components/ui/Text";
 import { resetStateAction } from "@/store/boardCreate/boardCreateActions.ts";
-import { cls } from "@/utils/helpers/cls/cls";
+import { cls } from "@/utils/helpers";
 import { useAppDispatch } from "@/utils/hooks";
 import { useCallback, useState } from "react";
 import styles from "./BoardsPage.module.scss";
@@ -12,23 +13,41 @@ interface BoardsPageProps {
 }
 
 const BoardsPage = ({ className }: BoardsPageProps) => {
-  const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const [isCreateBoardModal, setIsCreateBoardModal] = useState<boolean>(false);
+  const [isBoardBackgroundModal, setIsBoardBackgroundModal] =
+    useState<boolean>(false);
 
-  const onCloseModal = useCallback(() => {
-    setIsAuthModal(false);
+  const onCloseModalAddBoard = useCallback(() => {
+    setIsCreateBoardModal(false);
     dispatch(resetStateAction());
   }, [dispatch]);
 
-  const onShowModal = useCallback(() => {
-    setIsAuthModal(true);
+  const onShowModalAddBoard = useCallback(() => {
+    setIsCreateBoardModal(true);
+  }, []);
+
+  const onShowModalBoardBackgroundModal = useCallback(() => {
+    setIsBoardBackgroundModal(true);
+  }, []);
+
+  const onCloseBoardBackgroundModal = useCallback(() => {
+    setIsBoardBackgroundModal(false);
   }, []);
 
   return (
     <div className={cls([styles.BoardsPage, className])}>
       <Text title={"Доски"} bold size={"l"} />
-      <BoardList onShowModal={onShowModal} />
-      <AddBoardModal isOpen={isAuthModal} onClose={onCloseModal} />
+      <BoardList onShowModal={onShowModalAddBoard} />
+      <AddBoardModal
+        isOpen={isCreateBoardModal}
+        onClose={onCloseModalAddBoard}
+        onShowModalBoardBackgroundModal={onShowModalBoardBackgroundModal}
+      />
+      <BoardBackgroundModal
+        isOpen={isBoardBackgroundModal}
+        onClose={onCloseBoardBackgroundModal}
+      />
     </div>
   );
 };
