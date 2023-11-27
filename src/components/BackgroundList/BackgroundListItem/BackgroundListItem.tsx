@@ -4,26 +4,30 @@ import { setBackdropBoardAction } from "@/store/boardCreate/boardCreateActions.t
 import { cls } from "@/utils/helpers";
 import { useAppDispatch, useTypedSelector } from "@/utils/hooks";
 import { memo } from "react";
+import { BackgroundColors } from "../BackgroundList.tsx";
 import styles from "./BackgroundListItem.module.scss";
 
 interface BackdropListItemProps {
   className?: string;
-  color: string;
+  item: BackgroundColors;
 }
 
 export const BackgroundListItem = memo(
-  ({ className, color }: BackdropListItemProps) => {
+  ({ className, item }: BackdropListItemProps) => {
     const { backdrop } = useTypedSelector((state) => state.boardCreate);
+
     const dispatch = useAppDispatch();
 
     const addBackdropBoard = () => {
-      dispatch(setBackdropBoardAction(color));
+      dispatch(setBackdropBoardAction(item.color));
     };
 
     return (
       <li className={cls([styles.BackgroundListItem, className])}>
-        <Button style={{ background: color }} onClick={addBackdropBoard}>
-          {backdrop === color && <CheckIcon />}
+        <Button style={{ background: item.color }} onClick={addBackdropBoard}>
+          {backdrop === item.color && (
+            <CheckIcon className={styles.iconCheck} />
+          )}
         </Button>
       </li>
     );

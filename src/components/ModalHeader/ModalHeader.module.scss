@@ -12,24 +12,30 @@
 	white-space: nowrap;
   }
 
+  .button_back {
+	grid-column: 1;
+	grid-row: 1;
+	width: 32px;
+	height: 32px;
+	padding: 6px;
+	position: relative;
+	z-index: 2;
+
+	svg {
+	  width: 14px;
+	  height: 14px;
+	  fill: var(--color-main);
+	}
+  }
+
   .button_close {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	grid-column: 3;
 	grid-row: 1;
 	width: 32px;
 	height: 32px;
 	padding: 6px;
-	border-radius: 8px;
-
-	&:hover {
-	  background-color: #a6c5e229;
-	}
-
-	&:active {
-	  background-color: #bfdbf847;
-	}
+	position: relative;
+	z-index: 2;
 
 	svg {
 	  width: 14px;

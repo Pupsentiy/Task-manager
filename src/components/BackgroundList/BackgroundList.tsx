@@ -1,4 +1,3 @@
-import { Text } from "@/components/ui/Text";
 import { cls } from "@/utils/helpers";
 import { memo } from "react";
 import styles from "./BackgroundList.module.scss";
@@ -17,12 +16,11 @@ interface BackdropListProps {
 export const BackgroundList = memo(
   ({ className, backgroundColor }: BackdropListProps) => {
     return (
-      <div className={cls([styles.BackdropList, className])}>
-        <Text text={"Фон"} size={"xs"} bold />
+      <div className={cls([styles.BackgroundList, className])}>
         <ul>
           {Boolean(backgroundColor) &&
-            backgroundColor?.map(({ id, color }) => (
-              <BackgroundListItem key={id} color={color} />
+            backgroundColor?.map((color) => (
+              <BackgroundListItem key={color.color} item={color} />
             ))}
         </ul>
       </div>

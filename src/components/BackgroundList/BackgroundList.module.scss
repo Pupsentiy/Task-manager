@@ -1,9 +1,7 @@
-.BackdropList {
-  margin-top: 12px;
-
+.BackgroundList {
   ul {
 	display: flex;
-	justify-content: space-between;
+	gap: 8px;
   }
 
 }

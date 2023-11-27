@@ -13,11 +13,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
   }
 
   .content {
-	padding: 10px;
+	//padding: 10px;
 	border-radius: 12px;
 	background: var(--surface-overlay);
 	box-shadow: var(--shadow-overlay);
@@ -25,6 +24,18 @@
 	transform: scale(0.5);
 	max-width: 60%;
 	position: absolute;
+
+
+  }
+
+  .small {
+	max-width: 304px;
+	width: 100%;
+  }
+
+  .big {
+	max-width: 768px;
+	width: 100%;
   }
 }
 

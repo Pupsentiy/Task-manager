@@ -32,14 +32,18 @@
 .transparent {
   background: transparent;
   color: var(--color-main);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-	background: transparent;
+	background-color: #a6c5e229;
 	color: var(--color-main);
   }
 
   &:active {
-	background: transparent;
+	background-color: #bfdbf847;
 	color: var(--color-main);
   }
 }

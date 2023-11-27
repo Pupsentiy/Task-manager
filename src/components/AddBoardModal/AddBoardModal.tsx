@@ -1,6 +1,7 @@
 import { BackgroundPicker } from "@/components/BackgroundPicker";
 import { ModalHeader } from "@/components/ModalHeader";
 import { Modal } from "@/components/ui/Modal";
+import { Text } from "@/components/ui/Text";
 import { cls } from "@/utils/helpers";
 import { memo } from "react";
 import { AddBoardForm } from "../AddBoardForm";
@@ -29,11 +30,14 @@ export const AddBoardModal = memo(
         lazy
       >
         <ModalHeader title={"Создать доску"} onClose={onClose} />
-        <PresentationBoard />
-        <BackgroundPicker
-          onShowModalBoardBackgroundModal={onShowModalBoardBackgroundModal}
-        />
-        <AddBoardForm onClose={onClose} />
+        <div className={styles.wrapper}>
+          <PresentationBoard />
+          <Text className={styles.label} text={"Фон"} size={"xs"} bold />
+          <BackgroundPicker
+            onShowModalBoardBackgroundModal={onShowModalBoardBackgroundModal}
+          />
+          <AddBoardForm onClose={onClose} />
+        </div>
       </Modal>
     );
   },

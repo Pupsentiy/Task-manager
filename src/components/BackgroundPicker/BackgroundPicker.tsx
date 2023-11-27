@@ -14,6 +14,17 @@ export const BackgroundPicker = ({
   className,
   onShowModalBoardBackgroundModal,
 }: BackgroundPickerProps) => {
+  // const [backgroundListState, setBackgroundListState] = useState<
+  //   BackgroundColors[] | undefined
+  // >(BackgroundColor.slice(0, 5));
+  //
+  // const changeBackgroundList = () => {
+  //   setBackgroundListState(
+  //     (state) =>
+  //       state?.filter((color) => color.color !== BackgroundColor?.[0].color),
+  //   );
+  // };
+
   return (
     <div className={cls([styles.BackgroundPicker, className])}>
       <div className={styles.wrapper}>
