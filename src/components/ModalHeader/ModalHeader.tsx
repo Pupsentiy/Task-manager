@@ -11,13 +11,15 @@ interface ModalHeaderProps {
   addonLeft?: ReactNode;
   onClose?: () => void;
   onHide?: () => void;
+  isVisibleMoreColor?: boolean;
 }
 
 export const ModalHeader = memo((props: ModalHeaderProps) => {
-  const { className, title, addonLeft, onClose, onHide } = props;
+  const { className, title, addonLeft, onClose, onHide, isVisibleMoreColor } =
+    props;
   return (
     <div className={cls([styles.ModalHeader, className])}>
-      {addonLeft && (
+      {addonLeft && isVisibleMoreColor && (
         <Button className={styles.button_back} onClick={onHide}>
           {addonLeft}
         </Button>

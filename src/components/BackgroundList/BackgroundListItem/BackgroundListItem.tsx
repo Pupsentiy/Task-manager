@@ -14,9 +14,8 @@ interface BackdropListItemProps {
 
 export const BackgroundListItem = memo(
   ({ className, item }: BackdropListItemProps) => {
-    const { backdrop } = useTypedSelector((state) => state.boardCreate);
-
     const dispatch = useAppDispatch();
+    const { backdrop } = useTypedSelector((state) => state.boardCreate);
 
     const addBackdropBoard = () => {
       dispatch(setBackdropBoardAction(item.color));

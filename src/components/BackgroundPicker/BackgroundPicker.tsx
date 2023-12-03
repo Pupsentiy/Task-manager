@@ -1,29 +1,23 @@
 import { Button } from "@/components/ui/Button";
 import { EllipsisIcon } from "@/components/ui/Icons";
+import { setOpenBackgroundModal } from "@/store/modalState/modalStateActions";
 import { BackgroundColor } from "@/utils/const/constants";
 import { cls } from "@/utils/helpers";
+import { useAppDispatch } from "@/utils/hooks";
+import { useCallback } from "react";
 import { BackgroundList } from "../BackgroundList";
 import styles from "./BackgroundPicker.module.scss";
 
 interface BackgroundPickerProps {
   className?: string;
-  onShowModalBoardBackgroundModal?: () => void;
 }
 
-export const BackgroundPicker = ({
-  className,
-  onShowModalBoardBackgroundModal,
-}: BackgroundPickerProps) => {
-  // const [backgroundListState, setBackgroundListState] = useState<
-  //   BackgroundColors[] | undefined
-  // >(BackgroundColor.slice(0, 5));
-  //
-  // const changeBackgroundList = () => {
-  //   setBackgroundListState(
-  //     (state) =>
-  //       state?.filter((color) => color.color !== BackgroundColor?.[0].color),
-  //   );
-  // };
+export const BackgroundPicker = ({ className }: BackgroundPickerProps) => {
+  const dispatch = useAppDispatch();
+
+  const onShowModalBoardBackgroundModal = useCallback(() => {
+    dispatch(setOpenBackgroundModal());
+  }, [dispatch]);
 
   return (
     <div className={cls([styles.BackgroundPicker, className])}>

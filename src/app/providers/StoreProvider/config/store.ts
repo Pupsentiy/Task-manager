@@ -1,5 +1,6 @@
 import { boardReducer } from "@/store/board/boardReducer.ts";
 import { boardCreateReducer } from "@/store/boardCreate/boardCreateReducer.ts";
+import { modalStateReducer } from "@/store/modalState/modalStateReducer.ts";
 import {
   AnyAction,
   applyMiddleware,
@@ -13,10 +14,10 @@ import { StateSchema } from "./StateSchema.ts";
 const rootReducer: Reducer<StateSchema> = combineReducers<StateSchema>({
   board: boardReducer,
   boardCreate: boardCreateReducer,
+  modalState: modalStateReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
-// export type AppDispatch = ReturnType<typeof store.dispatch>;
 export type RootState = ReturnType<typeof store.getState>;
 export type TypedDispatch = ThunkDispatch<RootState, never, AnyAction>;
