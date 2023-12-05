@@ -1,3 +1,4 @@
+import { backgroundListReducer } from "@/store/backgroundList/backgroundListReducer.ts";
 import { boardReducer } from "@/store/board/boardReducer.ts";
 import { boardCreateReducer } from "@/store/boardCreate/boardCreateReducer.ts";
 import { modalStateReducer } from "@/store/modalState/modalStateReducer.ts";
@@ -15,6 +16,7 @@ const rootReducer: Reducer<StateSchema> = combineReducers<StateSchema>({
   board: boardReducer,
   boardCreate: boardCreateReducer,
   modalState: modalStateReducer,
+  backgroundList: backgroundListReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

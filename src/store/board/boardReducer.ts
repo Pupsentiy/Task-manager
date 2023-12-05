@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from "uuid";
+import { generateCode } from "@/utils/helpers";
 import { ActionType, BoardActionType, BoardSchema } from "./types";
 
 const initialState: BoardSchema = {
@@ -16,7 +16,7 @@ export const boardReducer = (
         boards: [
           ...state.boards,
           {
-            id: uuidV4().slice(0, 10),
+            id: generateCode(),
             title: action.payload.title,
             backdrop: action.payload.backdrop,
           },

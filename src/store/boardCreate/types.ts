@@ -1,7 +1,7 @@
 import { Action } from "redux";
 
 export interface BoardCreateSchema {
-  id: string | null;
+  id: number | null;
   title: string;
   backdrop: string;
 }

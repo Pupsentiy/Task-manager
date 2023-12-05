@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/Button";
 import { EllipsisIcon } from "@/components/ui/Icons";
 import { setOpenBackgroundModal } from "@/store/modalState/modalStateActions";
-import { BackgroundColor } from "@/utils/const/constants";
 import { cls } from "@/utils/helpers";
-import { useAppDispatch } from "@/utils/hooks";
+import { useAppDispatch, useTypedSelector } from "@/utils/hooks";
 import { useCallback } from "react";
 import { BackgroundList } from "../BackgroundList";
 import styles from "./BackgroundPicker.module.scss";
@@ -14,7 +13,9 @@ interface BackgroundPickerProps {
 
 export const BackgroundPicker = ({ className }: BackgroundPickerProps) => {
   const dispatch = useAppDispatch();
-
+  const { backgroundPickerList } = useTypedSelector(
+    (state) => state.backgroundList,
+  );
   const onShowModalBoardBackgroundModal = useCallback(() => {
     dispatch(setOpenBackgroundModal());
   }, [dispatch]);
@@ -22,7 +23,7 @@ export const BackgroundPicker = ({ className }: BackgroundPickerProps) => {
   return (
     <div className={cls([styles.BackgroundPicker, className])}>
       <div className={styles.wrapper}>
-        <BackgroundList backgroundColor={BackgroundColor.slice(0, 5)} />
+        <BackgroundList backgroundColor={backgroundPickerList} />
         <Button
           className={styles.more}
           color={"dark"}

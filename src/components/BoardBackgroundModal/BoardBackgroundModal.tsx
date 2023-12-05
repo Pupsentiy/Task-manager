@@ -5,7 +5,6 @@ import { ArrowLeftIcon } from "@/components/ui/Icons";
 import { Modal } from "@/components/ui/Modal";
 import { Text } from "@/components/ui/Text";
 import { setCloseBackgroundModal } from "@/store/modalState/modalStateActions";
-import { BackgroundColor } from "@/utils/const/constants";
 import { cls } from "@/utils/helpers";
 import { useAppDispatch, useTypedSelector } from "@/utils/hooks";
 import { Fragment, memo, useCallback, useState } from "react";
@@ -21,6 +20,10 @@ export const BoardBackgroundModal = memo(
     const { boardBackgroundModal } = useTypedSelector(
       (state) => state.modalState,
     );
+    const { backgroundModalList, backgroundMoreModalLIst } = useTypedSelector(
+      (state) => state.backgroundList,
+    );
+
     const [isVisibleMoreColor, setIsVisibleMoreColor] =
       useState<boolean>(false);
 
@@ -76,14 +79,14 @@ export const BoardBackgroundModal = memo(
           </div>
           <BackgroundList
             className={styles.backgroundList}
-            backgroundColor={BackgroundColor.slice(0, 9)}
+            backgroundColor={backgroundModalList}
           />
           {isVisibleMoreColor && (
             <Fragment>
               <hr />
               <BackgroundList
                 className={styles.backgroundList}
-                backgroundColor={BackgroundColor.slice(9, 18)}
+                backgroundColor={backgroundMoreModalLIst}
               />
             </Fragment>
           )}

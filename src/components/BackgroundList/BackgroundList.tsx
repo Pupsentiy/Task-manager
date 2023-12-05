@@ -1,12 +1,8 @@
+import { BackgroundColors } from "@/store/backgroundList/types";
 import { cls } from "@/utils/helpers";
 import { memo } from "react";
 import styles from "./BackgroundList.module.scss";
-import { BackgroundListItem } from "./BackgroundListItem/BackgroundListItem.tsx";
-
-export interface BackgroundColors {
-  id: number;
-  color: string;
-}
+import { BackgroundListItem } from "./BackgroundListItem/BackgroundListItem";
 
 interface BackdropListProps {
   className?: string;
