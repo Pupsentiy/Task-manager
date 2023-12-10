@@ -2,7 +2,8 @@ import { BackgroundPicker } from "@/components/BackgroundPicker";
 import { ModalHeader } from "@/components/ModalHeader";
 import { Modal } from "@/components/ui/Modal";
 import { Text } from "@/components/ui/Text";
-import { resetStateAction } from "@/store/boardCreate/boardCreateActions.ts";
+import { resetStateBackgroundListAction } from "@/store/backgroundList/backgroundListActions.ts";
+import { resetStateBoardAction } from "@/store/boardCreate/boardCreateActions.ts";
 import { setCloseAddBoardModal } from "@/store/modalState/modalStateActions.ts";
 import { cls } from "@/utils/helpers";
 import { useAppDispatch, useTypedSelector } from "@/utils/hooks";
@@ -21,7 +22,8 @@ export const AddBoardModal = memo(({ className }: AddBoardModalProps) => {
 
   const onCloseModalAddBoard = useCallback(() => {
     dispatch(setCloseAddBoardModal());
-    dispatch(resetStateAction());
+    dispatch(resetStateBoardAction());
+    dispatch(resetStateBackgroundListAction());
   }, [dispatch]);
 
   return (

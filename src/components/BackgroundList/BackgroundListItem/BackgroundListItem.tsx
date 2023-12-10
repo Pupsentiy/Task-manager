@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
-import { setItemReplacement } from "@/store/backgroundList/backgroundListActions.ts";
+import { setBackgroundItemReplacementAction } from "@/store/backgroundList/backgroundListActions.ts";
 import { BackgroundColors } from "@/store/backgroundList/types";
 import { setBackdropBoardAction } from "@/store/boardCreate/boardCreateActions";
 import { cls } from "@/utils/helpers";
@@ -20,7 +20,7 @@ export const BackgroundListItem = memo(
 
     const addBackdropBoard = () => {
       dispatch(setBackdropBoardAction(item.color));
-      dispatch(setItemReplacement(item));
+      dispatch(setBackgroundItemReplacementAction(item));
     };
 
     return (

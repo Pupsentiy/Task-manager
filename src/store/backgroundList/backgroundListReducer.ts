@@ -16,15 +16,20 @@ export const backgroundListReducer = (
   action: BackgroundListActionType,
 ): BackgroundListSchema => {
   switch (action.type) {
-    case ActionType.ITEM_REPLACEMENT:
-      state.backgroundPickerList.shift();
+    case ActionType.BACKGROUND_ITEM_REPLACEMENT: {
+      const list = [...state.backgroundPickerList];
+      state.backgroundPickerList.indexOf(action.payload) === -1 && list.shift();
       return {
         ...state,
         backgroundPickerList:
           state.backgroundPickerList.indexOf(action.payload) === -1
-            ? [action.payload, ...state.backgroundPickerList]
+            ? [action.payload, ...list]
             : state.backgroundPickerList,
       };
+    }
+    case ActionType.RESET_STATE:
+      return initialState;
+
     default:
       return state;
   }

@@ -1,8 +1,12 @@
 import { ActionType, BackgroundColors, SetItemReplacement } from "./types.ts";
 
-export const setItemReplacement = (
+export const setBackgroundItemReplacementAction = (
   item: BackgroundColors,
 ): SetItemReplacement => ({
-  type: ActionType.ITEM_REPLACEMENT,
+  type: ActionType.BACKGROUND_ITEM_REPLACEMENT,
   payload: item,
+});
+
+export const resetStateBackgroundListAction = () => ({
+  type: ActionType.RESET_STATE,
 });

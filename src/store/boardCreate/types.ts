@@ -1,7 +1,7 @@
 import { Action } from "redux";
 
 export interface BoardCreateSchema {
-  id: number | null;
+  id: string | null;
   title: string;
   backdrop: string;
 }
@@ -22,11 +22,11 @@ export interface SetBackdropBoard extends Action {
   payload: string;
 }
 
-export interface ResetState extends Action {
+export interface ResetStateBoard extends Action {
   type: ActionType.RESET_STATE;
 }
 
 export type BoardCreateActionType =
   | SetTitleBoard
   | SetBackdropBoard
-  | ResetState;
+  | ResetStateBoard;

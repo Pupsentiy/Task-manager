@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Text } from "@/components/ui/Text";
+import { resetStateBackgroundListAction } from "@/store/backgroundList/backgroundListActions.ts";
 import { addBoardAction } from "@/store/board/boardActions.ts";
 import {
   addTitleBoardAction,
-  resetStateAction,
+  resetStateBoardAction,
 } from "@/store/boardCreate/boardCreateActions.ts";
 import { cls } from "@/utils/helpers";
 import { useAppDispatch, useTypedSelector } from "@/utils/hooks";
@@ -32,7 +33,8 @@ export const AddBoardForm = memo(
       event.preventDefault();
       if (!title) return;
       dispatch(addBoardAction(title, backdrop));
-      dispatch(resetStateAction());
+      dispatch(resetStateBoardAction());
+      dispatch(resetStateBackgroundListAction());
       onClose?.();
     };
     return (

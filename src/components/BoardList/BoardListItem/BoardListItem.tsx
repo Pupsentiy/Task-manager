@@ -1,3 +1,4 @@
+import { getRouteBoardDetails } from "@/app/providers/router/config/router.ts";
 import { Text } from "@/components/ui/Text";
 import { BoardCreateSchema } from "@/store/boardCreate/types.ts";
 import { cls } from "@/utils/helpers";
@@ -8,16 +9,19 @@ import styles from "./BoardListItem.module.scss";
 interface BoardListItemProps {
   className?: string;
   board: BoardCreateSchema;
+  boardId: string | null;
 }
 
 export const BoardListItem = memo(
-  ({ className, board }: BoardListItemProps) => {
+  ({ className, board, boardId }: BoardListItemProps) => {
+    if (!boardId) return;
+
     return (
       <li>
         <Link
           className={cls([styles.BoardCardItem, className])}
           style={{ background: board.backdrop }}
-          to={""}
+          to={getRouteBoardDetails(boardId)}
         >
           <span className={styles.hover} />
           <div className={styles.inner_container_link}>

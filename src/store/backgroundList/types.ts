@@ -12,12 +12,19 @@ export interface BackgroundListSchema {
 }
 
 export enum ActionType {
-  ITEM_REPLACEMENT = "ITEM_REPLACEMENT",
+  BACKGROUND_ITEM_REPLACEMENT = "BACKGROUND_ITEM_REPLACEMENT",
+  RESET_STATE = "RESET_STATE",
 }
 
 export interface SetItemReplacement extends Action {
-  type: ActionType.ITEM_REPLACEMENT;
+  type: ActionType.BACKGROUND_ITEM_REPLACEMENT;
   payload: BackgroundColors;
 }
 
-export type BackgroundListActionType = SetItemReplacement;
+export interface ResetStateBackgroundList extends Action {
+  type: ActionType.RESET_STATE;
+}
+
+export type BackgroundListActionType =
+  | SetItemReplacement
+  | ResetStateBackgroundList;

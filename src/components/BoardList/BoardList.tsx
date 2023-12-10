@@ -30,7 +30,7 @@ export const BoardList = memo(({ className }: BoardListProps) => {
       </li>
       {Boolean(boards) &&
         boards.map((board, index) => (
-          <BoardListItem key={index} board={board} />
+          <BoardListItem key={index} board={board} boardId={board.id} />
         ))}
     </ul>
   );

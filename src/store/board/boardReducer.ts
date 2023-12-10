@@ -16,7 +16,7 @@ export const boardReducer = (
         boards: [
           ...state.boards,
           {
-            id: generateCode(),
+            id: String(generateCode()),
             title: action.payload.title,
             backdrop: action.payload.backdrop,
           },

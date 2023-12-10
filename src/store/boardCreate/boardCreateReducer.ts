@@ -22,12 +22,7 @@ export const boardCreateReducer = (
         backdrop: action.payload,
       };
     case ActionType.RESET_STATE:
-      return {
-        ...state,
-        id: null,
-        title: "",
-        backdrop: "#0079bf",
-      };
+      return initialState;
 
     default:
       return state;

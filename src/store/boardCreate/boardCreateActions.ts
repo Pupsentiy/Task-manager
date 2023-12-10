@@ -10,6 +10,6 @@ export const setBackdropBoardAction = (backdrop: string): SetBackdropBoard => ({
   payload: backdrop,
 });
 
-export const resetStateAction = () => ({
+export const resetStateBoardAction = () => ({
   type: ActionType.RESET_STATE,
 });
