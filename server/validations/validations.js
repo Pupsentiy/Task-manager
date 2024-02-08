@@ -13,8 +13,16 @@ export const registerValidation = [
 ]
 
 export const boardCreateValidation = [
-    body('title','Введите заголовок статьи').isLength({ min:1 }),
+    body('title','Введите заголовок доски').isLength({ min:1 }),
     body('background', 'Выберете фон').optional().isString(),
     body('isPublic','Укажите видимость (приватная/публичная)').isBoolean(),
     // что то придумать с видимостью для других участников !!!!!
+]
+
+export const columnCreateValidation = [
+    body('title','Введите заголовок колонки').isLength({min:1})
+]
+
+export const cardCreateValidation = [
+    body('title','Введите заголовок карточки').isLength({min:1})
 ]

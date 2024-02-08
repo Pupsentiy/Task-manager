@@ -15,5 +15,5 @@ app.listen(8008,(err)=> {
         return console.log(err)
     }
 
-    console.log('server start 8008')
+    console.log('server Ok 8008')
 })

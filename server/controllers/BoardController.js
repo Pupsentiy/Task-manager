@@ -4,13 +4,32 @@ import User from "../models/User.js";
 
 export const getAll = async (req,res) => {
     try {
-        const boards = await BoardModel.find()
+        const boards = await BoardModel.aggregate([
+            {
+                $lookup: {
+                        from: 'columns',
+                    let: { boardId: '$_id' },
+                    pipeline: [
+                        { $match: { $expr: { $eq: ['$boardId', '$$boardId'] } } },
+                        {
+                            $lookup: {
+                                from: 'cards',
+                                let: { columnId: '$_id' },
+                                pipeline: [{ $match: { $expr: { $eq: ['$columnId', '$$columnId'] } } }],
+                                as: 'cards',
+                            },
+                        },
+                    ],
+                    as: 'columns',
+                },
+            },
+        ]);
         // const boards = await BoardModel.find().populate('user', '-passwordHash').exec()
         res.json(boards)
     }catch (err) {
         console.log(err)
         res.status(500).json({
-            message:'Не удалось получить доску'
+            message:'Не удалось получить доски'
         })
     }
 }
@@ -37,13 +56,14 @@ export const getOne = async (req,res) => {
 
 export const create = async (req,res) => {
     try{
-
         const doc = new BoardModel({
             title: req.body.title,
             background: req.body.background,
             isPublic: req.body.isPublic,
             user:req.userId
         })
+
+
 
         const board = await doc.save()
 
@@ -52,6 +72,7 @@ export const create = async (req,res) => {
             {$push: {'boards': board._id}},
             {new:true}
         )
+
 
         res.json(board)
     }catch (err) {

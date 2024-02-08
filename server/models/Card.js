@@ -8,19 +8,19 @@ const CardSchema = new mongoose.Schema({
         description:{
             type:String
         },
-        tag:{
+        tags:{
             type:Array,
-
         },
-
-        position:{
-            type:String,
-            required: true
-        },
-        column:{
+        // position:{
+        //     type:String,
+        //     required: true
+        // },
+        columnId:{
             type: mongoose.Schema.Types.ObjectId,
+            required:true,
             ref: "Column"
-        }
+        },
+
     },
     {
     timestamps:true
