@@ -25,7 +25,7 @@ export const getAll = async (req,res) => {
             },
         ]);
         // const boards = await BoardModel.find().populate('user', '-passwordHash').exec()
-        res.json(boards)
+        res.status(200).json(boards)
     }catch (err) {
         console.log(err)
         res.status(500).json({
@@ -45,7 +45,7 @@ export const getOne = async (req,res) => {
                     message: "Доска не найдена"
                 })
         }
-        res.json(board)
+        res.status(200).json(board)
     }catch (err) {
         console.log(err)
      return res.status(500).json({
@@ -74,7 +74,7 @@ export const create = async (req,res) => {
         )
 
 
-        res.json(board)
+        res.status(200).json(board)
     }catch (err) {
         console.log(err)
         res.status(500).json({
@@ -92,7 +92,7 @@ export const remove = async (req,res) => {
                message: 'Такой доски не существует'
            })
         }
-           res.json({
+           res.status(200).json({
                success:true
            })
     }catch (err) {
@@ -114,8 +114,10 @@ export const update = async (req,res) => {
             background:req.body.background,
             isPublic: req.body.isPublic,
             user:req.userId
+        },{
+            new:true
         })
-        res.json({
+        res.status(200).json({
             success:true
         })
     }catch (err){

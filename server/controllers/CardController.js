@@ -3,7 +3,7 @@ import CardModel from "../models/Card.js";
 export const getAll = async (req,res) => {
     try {
         const cards = await CardModel.find()
-        res.json(cards)
+        res.status(200).json(cards)
     }catch (err) {
         console.log(err)
         res.status(500).json({
@@ -24,7 +24,7 @@ export const getOne = async (req,res) => {
             })
         }
 
-        res.json(card)
+        res.status(200).json(card)
     }catch (err) {
         console.log(err)
         return res.status(500).json({
@@ -42,7 +42,7 @@ export const create = async (req,res) => {
 
         const card = await doc.save()
 
-        res.json(card)
+        res.status(200).json(card)
     }catch (err) {
         console.log(err)
         res.status(500).json({
@@ -60,7 +60,7 @@ export const remove = async (req,res) => {
                 message: 'Такой карточки не существует!'
             })
         }
-        res.json({
+        res.status(200).json({
             success:true
         })
     }catch (err) {
@@ -80,9 +80,15 @@ export const update = async (req,res) => {
         },{
             title: req.body.title,
             description:req.body.description,
-            tags:req.body.tags
+            dueDate:req.body.dueDate,
+            labels:req.body.tags,
+            cover:req.body.cover,
+            checkList:req.body.checkList,
+            comments:req.body.comments
+        },{
+            new:true
         })
-        res.json({
+        res.status(200).json({
             success:true
         })
     }catch (err){

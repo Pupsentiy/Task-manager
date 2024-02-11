@@ -6,15 +6,41 @@ const CardSchema = new mongoose.Schema({
             required:true
         },
         description:{
-            type:String
+            type:String,
+            default:''
         },
-        tags:{
-            type:Array,
+        dueDate: {
+            type: Date,
+            default: null
+        },
+        labels: {
+            type: [String],
+            default: []
         },
         // position:{
         //     type:String,
         //     required: true
         // },
+        cover:{type:String},
+        checklist: {
+        type: [{
+            title: String,
+            completed: {
+                type: Boolean,
+                default: false
+            }
+        }]},
+        comments: {
+            type: [{
+                text: String,
+                date: {
+                    type: Date,
+                    default: Date.now
+                },
+                author: String
+            }],
+            default: []
+        },
         columnId:{
             type: mongoose.Schema.Types.ObjectId,
             required:true,
