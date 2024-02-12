@@ -25,7 +25,12 @@ export const ModalHeader = memo((props: ModalHeaderProps) => {
         </Button>
       )}
       <Text title={title} bold size={"xs"} className={styles.title_modal} />
-      <Button className={styles.button_close} onClick={onClose}>
+      <Button
+        className={styles.button_close}
+        onClick={onClose}
+        size={"xs"}
+        radius={"r2"}
+      >
         <CloseIcon className={styles.icon_close} />
       </Button>
     </div>

@@ -4,6 +4,7 @@
   --color-main: #b6c2cf;
   --color-innverse: #1d2125;
   --color-text-disabled: #BFDBF847;
+  --icon-primary-color: #dee4ea;
   --icon-accent: #e2483d;
   --surface-overlay: #282e33;
   --background-disabled: #bcd6f00a;
@@ -17,20 +18,24 @@
   --background-color-bold-hovered: #85b8ff;
   --background-color-bold-pressed: #cce0ff;
   --shadow-overlay: 0px 0px 0px 1px #39424a, 0px 8px 12px #0304045C, 0px 0px 1px 1px #03040480;
+  --shadow-reised: 0px 0px 0px 1px #00000000, 0px 1px 1px #03040480, 0px 0px 1px #03040480;
+  --board-header-background-color: #0000003d;
+  --color-text-white: #fff;
+  --background-color-list: #101204;
   // border-color
   --border-color-input: #a6c5e229;
   --border-color-input-focused: #85b8ff;
   --ac-border: #a6c5e229;
 
   // fonts
-  --font-family-main: sans-serif;
+  --font-family-main: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;;
   // xs
   --font-size-xs: 12px;
   --font-line-xs: 20px;
   --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
   // s
   --font-size-s: 14px;
-  --font-line-s: 22px;
+  --font-line-s: 20px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);;
 
   // m

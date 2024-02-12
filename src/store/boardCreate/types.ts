@@ -1,9 +1,11 @@
+import { ColumnCreateSchema } from "@/store/columnCreate/types.ts";
 import { Action } from "redux";
 
 export interface BoardCreateSchema {
   id: string | null;
   title: string;
   backdrop: string;
+  column: ColumnCreateSchema[];
 }
 
 export enum ActionType {

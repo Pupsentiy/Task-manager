@@ -31,8 +31,8 @@ export const AddBoardForm = memo(
 
     const addBoard = (event: FormEvent) => {
       event.preventDefault();
-      if (!title) return;
-      dispatch(addBoardAction(title, backdrop));
+      if (!title.trim().length) return;
+      dispatch(addBoardAction(title.trim(), backdrop));
       dispatch(resetStateBoardAction());
       dispatch(resetStateBackgroundListAction());
       onClose?.();

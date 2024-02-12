@@ -2,13 +2,14 @@ import { Action } from "redux";
 import { BoardCreateSchema } from "../boardCreate/types";
 
 export interface BoardSchema {
-  boards: BoardCreateSchema[];
+  board: BoardCreateSchema[];
 }
 
 // export type BoardAction
 
 export enum ActionType {
   ADD_BOARD = "ADD_BOARD",
+  ADD_COLUMN = "ADD_COLUMN",
 }
 
 export interface SetAddBoard extends Action {
@@ -16,4 +17,9 @@ export interface SetAddBoard extends Action {
   payload: { title: string; backdrop: string };
 }
 
-export type BoardActionType = SetAddBoard;
+export interface SetAddColumn extends Action {
+  type: ActionType.ADD_COLUMN;
+  payload: { boardId: string; title: string };
+}
+
+export type BoardActionType = SetAddBoard | SetAddColumn;

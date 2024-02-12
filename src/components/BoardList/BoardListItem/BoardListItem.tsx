@@ -19,13 +19,13 @@ export const BoardListItem = memo(
     return (
       <li>
         <Link
-          className={cls([styles.BoardCardItem, className])}
+          className={cls([styles.BoardListItem, className])}
           style={{ background: board.backdrop }}
           to={getRouteBoardDetails(boardId)}
         >
           <span className={styles.hover} />
           <div className={styles.inner_container_link}>
-            <Text title={board.title} size={"xs"} bold />
+            <Text title={`${board.title.slice(0, 70)}...`} size={"xs"} bold />
           </div>
         </Link>
       </li>

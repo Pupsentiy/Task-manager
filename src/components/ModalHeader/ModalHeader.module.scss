@@ -15,17 +15,6 @@
   .button_back {
 	grid-column: 1;
 	grid-row: 1;
-	width: 32px;
-	height: 32px;
-	padding: 6px;
-	position: relative;
-	z-index: 2;
-
-	svg {
-	  width: 14px;
-	  height: 14px;
-	  fill: var(--color-main);
-	}
   }
 
   .button_close {

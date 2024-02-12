@@ -1,3 +1,15 @@
 .BoardDetailsPage {
+  height: 100vh;
 
+  .wrapper_title {
+	padding: 12px 30px;
+	background: var(--board-header-background-color);
+	color: var(--color-text-white);
+
+	h2 {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	}
+  }
 }

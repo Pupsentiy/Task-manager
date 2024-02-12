@@ -1,4 +1,4 @@
-import { ActionType, SetAddBoard } from "./types.ts";
+import { ActionType, SetAddBoard, SetAddColumn } from "./types.ts";
 
 export const addBoardAction = (
   title: string,
@@ -6,4 +6,12 @@ export const addBoardAction = (
 ): SetAddBoard => ({
   type: ActionType.ADD_BOARD,
   payload: { title, backdrop },
+});
+
+export const addColumnAction = (
+  boardId: string,
+  title: string,
+): SetAddColumn => ({
+  type: ActionType.ADD_COLUMN,
+  payload: { boardId, title },
 });

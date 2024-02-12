@@ -12,7 +12,7 @@ interface BoardListProps {
 
 export const BoardList = memo(({ className }: BoardListProps) => {
   const dispatch = useAppDispatch();
-  const { boards } = useTypedSelector((state) => state.board);
+  const board = useTypedSelector((state) => state.board.board);
 
   const onShowModalAddBoard = useCallback(() => {
     dispatch(setOpenAddBoardModal());
@@ -28,8 +28,8 @@ export const BoardList = memo(({ className }: BoardListProps) => {
           Создать доску
         </Button>
       </li>
-      {Boolean(boards) &&
-        boards.map((board, index) => (
+      {Boolean(board) &&
+        board.map((board, index) => (
           <BoardListItem key={index} board={board} boardId={board.id} />
         ))}
     </ul>
