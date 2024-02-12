@@ -1,0 +1,35 @@
+.ColumnListItem {
+  padding: 0 6px;
+  align-self: flex-start;
+  flex-shrink: 0;
+  display: block;
+  height: 100%;
+  white-space: nowrap;
+
+  .column {
+	display: flex;
+	justify-content: space-between;
+	max-height: 100%;
+	flex-direction: column;
+	width: 272px;
+	background-color: var(--background-color-list);
+	box-shadow: var(--shadow-reised);
+	padding-bottom: 8px;
+	white-space: normal;
+	border-radius: 12px;
+
+	.column_header {
+	  padding: 8px 8px 0;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+
+	  .wrapper_title {
+
+		.title {
+		  padding: 6px 8px 6px 12px;
+		}
+	  }
+	}
+  }
+}

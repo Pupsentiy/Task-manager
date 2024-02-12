@@ -1,0 +1,31 @@
+.BoardList {
+  margin-top: 30px !important;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+	width: 25%;
+	height: 96px;
+	padding: 4px 8px;
+	cursor: pointer;
+
+	.create_board_button {
+	  background-color: var(--background-neutral);
+	  color: var(--color-main);
+	  font-weight: 500;
+	  border-radius: 3px;
+	  width: 100%;
+	  height: 100%;
+
+	  &:hover {
+		background-color: var(--background-neutral-hovered);
+	  }
+
+	  &:active {
+		background-color: var(--background-neutral-pressed);
+	  }
+	}
+  }
+
+
+}
