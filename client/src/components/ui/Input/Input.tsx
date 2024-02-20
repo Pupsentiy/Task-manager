@@ -1,3 +1,4 @@
+import { Text } from '@/components/ui/Text';
 import { cls } from '@/utils/helpers';
 import {
   type ChangeEvent,
@@ -20,6 +21,8 @@ interface InputProps extends HTMLInputProps {
   color?: InputColor;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
+  error?: string;
+  label?: string;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -34,6 +37,8 @@ export const Input = memo((props: InputProps) => {
     color = 'primary',
     addonLeft,
     addonRight,
+    error,
+    label,
     ...otherProps
   } = props;
 
@@ -46,8 +51,7 @@ export const Input = memo((props: InputProps) => {
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
   };
-
-  return (
+  const input = (
     <div className={cls([styles.Input, className])}>
       {addonLeft && <div className={styles.addonLeft}>{addonLeft}</div>}
       <input
@@ -62,4 +66,16 @@ export const Input = memo((props: InputProps) => {
       {addonRight && <div className={styles.addonRight}>{addonRight}</div>}
     </div>
   );
+
+  if (error || label) {
+    return (
+      <div className={styles.wrapper}>
+        <Text text={label} size={'m'} />
+        {input}
+        <Text className={styles.input_error} text={error} size={'xs'} />
+      </div>
+    );
+  }
+
+  return <div className={styles.wrapper}>{input}</div>;
 });
