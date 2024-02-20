@@ -1,21 +1,29 @@
-import { BoardsPage } from "@/pages/BoardsPage";
-import { NotFoundPage } from "@/pages/NotFoundPage";
-
-import { RouteProps } from "react-router-dom";
-import { BoardDetailsPage } from "src/pages/BoardDetailsPage";
-import { AppRoutes, getRouteBoardDetails, getRouteBoards } from "./router";
+import { AuthPage } from '@/pages/AuthPage';
+import { BoardDetailsPage } from '@/pages/BoardDetailsPage';
+import { BoardsPage } from '@/pages/BoardsPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { RouteProps } from 'react-router-dom';
+import { AppRoutes, routes } from './router';
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.BOARDS]: {
-    path: getRouteBoards(),
+    path: routes.getRouteBoards(),
     element: <BoardsPage />,
   },
   [AppRoutes.BOARD_DETAILS]: {
-    path: getRouteBoardDetails(":id"),
+    path: routes.getRouteBoardDetails(':id'),
     element: <BoardDetailsPage />,
   },
+  [AppRoutes.SIGN_IN]: {
+    path: routes.getRouteSignIn(),
+    element: <AuthPage isSignIn={true} />,
+  },
+  [AppRoutes.SIGN_UP]: {
+    path: routes.getRouteSignUp(),
+    element: <AuthPage isSignIn={false} />,
+  },
   [AppRoutes.NOT_FOUND]: {
-    path: "*",
+    path: '*',
     element: <NotFoundPage />,
   },
 };
