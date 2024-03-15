@@ -1,36 +1,37 @@
-import { cls } from "@/utils/helpers";
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { Portal } from "../Portal";
-import styles from "./Modal.module.scss";
+import { cls } from '@/utils/helpers';
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
-export type ModalSize = "big" | "small";
+import { Portal } from '../Portal';
+import styles from './Modal.module.scss';
+
+export type ModalSize = 'big' | 'small';
 
 interface ModalProps {
-  className?: string;
-  children: ReactNode;
-  isOpen?: boolean;
-  onClose?: () => void;
-  lazy?: boolean;
-  top?: number;
   bottom?: number;
+  children: ReactNode;
+  className?: string;
+  isOpen?: boolean;
+  lazy?: boolean;
   left?: number;
+  onClose?: () => void;
   right?: number;
   size?: ModalSize;
+  top?: number;
 }
 
 const ANIMATION_DELAY = 300;
 export const Modal = (props: ModalProps) => {
   const {
-    className,
-    children,
-    isOpen,
-    onClose,
-    lazy,
-    top,
     bottom,
+    children,
+    className,
+    isOpen,
+    lazy,
     left,
+    onClose,
     right,
-    size = "small",
+    size = 'small',
+    top,
   } = props;
   const [isClosing, setIsClosing] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -54,7 +55,7 @@ export const Modal = (props: ModalProps) => {
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         closeHandler();
       }
     },
@@ -67,13 +68,13 @@ export const Modal = (props: ModalProps) => {
 
   useEffect(() => {
     if (isOpen) {
-      window.addEventListener("keydown", onKeyDown);
+      window.addEventListener('keydown', onKeyDown);
     }
     return () => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       clearTimeout(timeRef.current as NodeJS.Timeout);
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);
 
@@ -85,15 +86,15 @@ export const Modal = (props: ModalProps) => {
     <Portal>
       <section
         className={cls([styles.Modal, className], {
-          [styles.opened]: Boolean(isOpen),
           [styles.isClosing]: Boolean(isClosing),
+          [styles.opened]: Boolean(isOpen),
         })}
       >
         <div className={styles.overlay} onClick={closeHandler}>
           <div
             className={cls([styles.content, styles[size]])}
             onClick={onContentClick}
-            style={{ top: top, bottom: bottom, left: left, right: right }}
+            style={{ bottom: bottom, left: left, right: right, top: top }}
           >
             {children}
           </div>

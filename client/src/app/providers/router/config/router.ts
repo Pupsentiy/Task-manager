@@ -1,8 +1,14 @@
 export enum AppRoutes {
-  BOARDS = "boards",
-  BOARD_DETAILS = "board_details",
-  NOT_FOUND = "not_found",
+  BOARD_DETAILS = 'board_details',
+  BOARDS = 'boards',
+  NOT_FOUND = 'not_found',
+  SIGN_IN = 'sign_in',
+  SIGN_UP = 'sign_up',
 }
 
-export const getRouteBoards = () => "/";
-export const getRouteBoardDetails = (id: string) => `/board/${id}`;
+export const routes = {
+  getRouteBoardDetails: (id: string) => `/board/${id}`,
+  getRouteBoards: () => '/',
+  getRouteSignIn: () => '/login',
+  getRouteSignUp: () => '/signup',
+};

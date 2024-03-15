@@ -1,10 +1,10 @@
-import { ActionType, BoardCreateActionType, BoardCreateSchema } from "./types";
+import { ActionType, BoardCreateActionType, BoardCreateSchema } from './types';
 
 const initialState: BoardCreateSchema = {
+  backdrop: '#0079bf',
+  column: [],
   id: null,
-  title: "",
-  backdrop: "#0079bf",
-  column:[]
+  title: '',
 };
 
 export const boardCreateReducer = (

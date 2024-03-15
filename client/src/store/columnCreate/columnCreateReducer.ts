@@ -1,13 +1,9 @@
-import {
-  ActionType,
-  ColumnCreateActionType,
-  ColumnCreateSchema,
-} from "./types";
+import { ActionType, ColumnCreateActionType, ColumnCreateSchema } from './types';
 
 const initialState: ColumnCreateSchema = {
   id: null,
-  title: "",
   task: [],
+  title: '',
 };
 
 export const columnCreateReducer = (

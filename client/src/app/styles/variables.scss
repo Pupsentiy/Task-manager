@@ -1,9 +1,8 @@
 :root {
-
   // Colors
   --color-main: #b6c2cf;
   --color-innverse: #1d2125;
-  --color-text-disabled: #BFDBF847;
+  --color-text-disabled: #bfdbf847;
   --icon-primary-color: #dee4ea;
   --icon-accent: #e2483d;
   --surface-overlay: #282e33;
@@ -11,13 +10,13 @@
   --background-color-main: #1d2125;
   --background-color-input: #22272b;
   --background-color-input-hovered: #282e33;
-  --background-neutral: #A1BDD914;
-  --background-neutral-hovered: #A6C5E229;
-  --background-neutral-pressed: #BFDBF847;
+  --background-neutral: #a1bdd914;
+  --background-neutral-hovered: #a6c5e229;
+  --background-neutral-pressed: #bfdbf847;
   --background-color-bold: #579dff;
   --background-color-bold-hovered: #85b8ff;
   --background-color-bold-pressed: #cce0ff;
-  --shadow-overlay: 0px 0px 0px 1px #39424a, 0px 8px 12px #0304045C, 0px 0px 1px 1px #03040480;
+  --shadow-overlay: 0px 0px 0px 1px #39424a, 0px 8px 12px #0304045c, 0px 0px 1px 1px #03040480;
   --shadow-reised: 0px 0px 0px 1px #00000000, 0px 1px 1px #03040480, 0px 0px 1px #03040480;
   --board-header-background-color: #0000003d;
   --color-text-white: #fff;
@@ -28,30 +27,31 @@
   --ac-border: #a6c5e229;
 
   // fonts
-  --font-family-main: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;;
+  --font-family-main: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu,
+    Droid Sans, Helvetica Neue, sans-serif;
   // xs
   --font-size-xs: 12px;
-  --font-line-xs: 20px;
+  --font-line-xs: 14px;
   --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
   // s
   --font-size-s: 14px;
-  --font-line-s: 20px;
-  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);;
+  --font-line-s: 16px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
 
   // m
   --font-size-m: 16px;
-  --font-line-m: 24px;
-  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);;
+  --font-line-m: 20px;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
 
   // l
   --font-size-l: 24px;
-  --font-line-l: 32px;
-  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);;
+  --font-line-l: 24px;
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
   // xl
   --font-size-xl: 32px;
   --font-line-xl: 40px;
-  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
   //input, select
 
@@ -62,5 +62,4 @@
   //modal
   --z-index-modal-main: 50;
   --z-index-modal-secondary: 60;
-
 }

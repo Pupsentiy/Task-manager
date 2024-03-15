@@ -1,4 +1,4 @@
-import { BoardSchema } from "@/store/board/types.ts";
+import { BoardSchema } from '@/store/board/types.ts';
 
 export const loadState = (stateName: string) => {
   try {

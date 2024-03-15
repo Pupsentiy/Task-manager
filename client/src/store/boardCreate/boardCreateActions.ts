@@ -1,13 +1,13 @@
-import { ActionType, SetBackdropBoard, SetTitleBoard } from "./types";
+import { ActionType, SetBackdropBoard, SetTitleBoard } from './types';
 
 export const addTitleBoardAction = (title: string): SetTitleBoard => ({
-  type: ActionType.SET_TITLE_BOARD,
   payload: title,
+  type: ActionType.SET_TITLE_BOARD,
 });
 
 export const setBackdropBoardAction = (backdrop: string): SetBackdropBoard => ({
-  type: ActionType.SET_BACKDROP_BOARD,
   payload: backdrop,
+  type: ActionType.SET_BACKDROP_BOARD,
 });
 
 export const resetStateBoardAction = () => ({

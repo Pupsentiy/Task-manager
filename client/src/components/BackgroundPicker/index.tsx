@@ -1,1 +1,1 @@
-export { BackgroundPicker } from "./BackgroundPicker.tsx";
+export { BackgroundPicker } from './BackgroundPicker.tsx';

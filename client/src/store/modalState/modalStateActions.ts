@@ -1,4 +1,4 @@
-import { ActionType } from "./types.ts";
+import { ActionType } from './types.ts';
 
 export const setOpenAddBoardModal = () => ({
   type: ActionType.SET_OPEN_ADD_BOARD_MODAL,

@@ -1,6 +1,3 @@
-import { lazy } from 'react'
+import { lazy } from 'react';
 
-export const BoardsPageAsync = lazy(
-    async () => await import('./BoardsPage.tsx')
-)
-
+export const BoardsPageAsync = lazy(async () => await import('./BoardsPage.tsx'));

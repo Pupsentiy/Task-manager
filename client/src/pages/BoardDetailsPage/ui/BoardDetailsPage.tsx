@@ -1,9 +1,10 @@
-import { ColumnList } from "@/components/ColumnList";
-import { Text } from "@/components/ui/Text";
-import { cls } from "@/utils/helpers";
-import { useTypedSelector } from "@/utils/hooks";
-import { useParams } from "react-router-dom";
-import styles from "./BoardDetailsPage.module.scss";
+import { ColumnList } from '@/components/ColumnList';
+import { Text } from '@/components/ui/Text';
+import { cls } from '@/utils/helpers';
+import { useTypedSelector } from '@/utils/hooks';
+import { useParams } from 'react-router-dom';
+
+import styles from './BoardDetailsPage.module.scss';
 
 interface BoardDetailsPageProps {
   className?: string;
@@ -11,8 +12,8 @@ interface BoardDetailsPageProps {
 
 const BoardDetailsPage = ({ className }: BoardDetailsPageProps) => {
   const { id } = useParams();
-  const board = useTypedSelector((state) => state.board.board);
-  const findBoard = board.find((item) => item.id === id);
+  const board = useTypedSelector(state => state.board.board);
+  const findBoard = board.find(item => item.id === id);
 
   return (
     <div
@@ -20,7 +21,7 @@ const BoardDetailsPage = ({ className }: BoardDetailsPageProps) => {
       style={{ background: findBoard?.backdrop }}
     >
       <div className={styles.wrapper_title}>
-        <Text title={findBoard?.title} bold size={"m"} />
+        <Text bold size={'m'} title={findBoard?.title} />
       </div>
       {Boolean(findBoard) && <ColumnList columns={findBoard?.column} />}
     </div>

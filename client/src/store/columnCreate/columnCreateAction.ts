@@ -1,8 +1,8 @@
-import { ActionType, SetTitleColumn } from "./types";
+import { ActionType, SetTitleColumn } from './types';
 
 export const addTitleColumnAction = (title: string): SetTitleColumn => ({
-  type: ActionType.SET_TITLE_COLUMN,
   payload: title,
+  type: ActionType.SET_TITLE_COLUMN,
 });
 
 export const resetStateColumnAction = () => ({

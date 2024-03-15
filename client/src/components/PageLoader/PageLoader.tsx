@@ -1,7 +1,8 @@
-import { Loader } from "@/components/ui/Loader";
-import { cls } from "@/utils/helpers";
-import { memo } from "react";
-import styles from "./PageLoader.module.scss";
+import { Loader } from '@/components/ui/Loader';
+import { cls } from '@/utils/helpers';
+import { memo } from 'react';
+
+import styles from './PageLoader.module.scss';
 
 interface PageLoaderProps {
   className?: string;

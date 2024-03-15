@@ -1,23 +1,23 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 export interface ColumnCreateSchema {
-  id: string | null;
-  title: string;
+  id: null | string;
   task: any[];
+  title: string;
 }
 
 export enum ActionType {
-  SET_TITLE_COLUMN = "SET_TITLE_COLUMN",
-  RESET_STATE = "RESET_STATE",
+  RESET_STATE = 'RESET_STATE',
+  SET_TITLE_COLUMN = 'SET_TITLE_COLUMN',
 }
 
 export interface SetTitleColumn extends Action {
-  type: ActionType.SET_TITLE_COLUMN;
   payload: string;
+  type: ActionType.SET_TITLE_COLUMN;
 }
 
 export interface ResetStateBoard extends Action {
   type: ActionType.RESET_STATE;
 }
 
-export type ColumnCreateActionType = SetTitleColumn | ResetStateBoard;
+export type ColumnCreateActionType = ResetStateBoard | SetTitleColumn;

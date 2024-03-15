@@ -1,44 +1,45 @@
-import { cls } from "@/utils/helpers";
-import { memo } from "react";
-import styles from "./Text.module.scss";
+import { cls } from '@/utils/helpers';
+import { memo } from 'react';
 
-export type TextAlign = "right" | "left" | "center";
+import styles from './Text.module.scss';
 
-export type TextSize = "xs" | "s" | "m" | "l";
+export type TextAlign = 'center' | 'left' | 'right';
+
+export type TextSize = 'l' | 'm' | 's' | 'xs';
 
 interface TextProps {
-  className?: string;
-  title?: string;
-  text?: string;
   align?: TextAlign;
-  size?: TextSize;
   bold?: boolean;
+  className?: string;
+  size?: TextSize;
+  text?: string;
+  title?: string;
 }
 
-type HeaderTagType = "h1" | "h2" | "h3" | "h4";
+type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4';
 
 const mapSizeToClass: Record<TextSize, string> = {
-  xs: styles.size_xs,
-  s: styles.size_s,
-  m: styles.size_m,
   l: styles.size_l,
+  m: styles.size_m,
+  s: styles.size_s,
+  xs: styles.size_xs,
 };
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-  xs: "h4",
-  s: "h3",
-  m: "h2",
-  l: "h1",
+  l: 'h1',
+  m: 'h2',
+  s: 'h3',
+  xs: 'h4',
 };
 
 export const Text = memo(
-  ({ className, title, text, align = "left", size = "m", bold }: TextProps) => {
+  ({ align = 'left', bold, className, size = 'm', text, title }: TextProps) => {
     const HeaderTag = mapSizeToHeaderTag[size];
     const sizeClass = mapSizeToClass[size];
 
     return (
       <div
-        className={cls([styles.Text, align, sizeClass, className], {
+        className={cls([styles.Text, styles[align], sizeClass, className], {
           [styles.bold]: Boolean(bold),
         })}
       >

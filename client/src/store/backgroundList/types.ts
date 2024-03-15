@@ -1,30 +1,28 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 export interface BackgroundColors {
-  id: number;
   color: string;
+  id: number;
 }
 
 export interface BackgroundListSchema {
-  backgroundPickerList: BackgroundColors[];
   backgroundModalList: BackgroundColors[];
   backgroundMoreModalLIst: BackgroundColors[];
+  backgroundPickerList: BackgroundColors[];
 }
 
 export enum ActionType {
-  BACKGROUND_ITEM_REPLACEMENT = "BACKGROUND_ITEM_REPLACEMENT",
-  RESET_STATE = "RESET_STATE",
+  BACKGROUND_ITEM_REPLACEMENT = 'BACKGROUND_ITEM_REPLACEMENT',
+  RESET_STATE = 'RESET_STATE',
 }
 
 export interface SetItemReplacement extends Action {
-  type: ActionType.BACKGROUND_ITEM_REPLACEMENT;
   payload: BackgroundColors;
+  type: ActionType.BACKGROUND_ITEM_REPLACEMENT;
 }
 
 export interface ResetStateBackgroundList extends Action {
   type: ActionType.RESET_STATE;
 }
 
-export type BackgroundListActionType =
-  | SetItemReplacement
-  | ResetStateBackgroundList;
+export type BackgroundListActionType = ResetStateBackgroundList | SetItemReplacement;

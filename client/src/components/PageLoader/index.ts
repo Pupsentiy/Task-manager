@@ -1,1 +1,1 @@
-export * from './PageLoader.tsx'
+export * from './PageLoader.tsx';

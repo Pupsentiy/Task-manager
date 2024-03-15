@@ -1,1 +1,1 @@
-export { BoardList } from "./BoardList.tsx";
+export { BoardList } from './BoardList.tsx';

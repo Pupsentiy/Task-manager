@@ -25,6 +25,8 @@
     },
     "types": [
       "vite/client",
+      "vitest/globals",
+      "vite-plugin-svgr/client"
     ],
     "typeRoots": [
       "node_modules/@types"
