@@ -6,6 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'plugin:perfectionist/recommended-natural',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -25,6 +26,13 @@ module.exports = {
         trailingComma: 'all',
       },
     ],
+    'perfectionist/sort-objects': [
+      'error',
+      {
+        type: 'natural',
+        order: 'asc',
+      },
+    ],
     'no-var': 'error',
     'prefer-const': 'warn',
     'react-hooks/rules-of-hooks': 'error',
@@ -41,6 +49,5 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': 'warn',
-
   },
 };

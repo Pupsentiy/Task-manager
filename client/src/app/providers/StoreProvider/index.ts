@@ -1,5 +1,6 @@
-import type { StateSchema } from "./config/StateSchema.ts";
-import { type TypedDispatch } from "./config/store.ts";
-import { StoreProvider } from "./ui/StoreProvider.tsx";
+import type { StateSchema } from './config/StateSchema.ts';
 
-export { StoreProvider, TypedDispatch, StateSchema };
+import { type TypedDispatch } from './config/store.ts';
+import { StoreProvider } from './ui/StoreProvider.tsx';
+
+export { StateSchema, StoreProvider, TypedDispatch };

@@ -1,14 +1,11 @@
-import { BackgroundColor } from "@/utils/const/constants.ts";
-import {
-  ActionType,
-  BackgroundListActionType,
-  BackgroundListSchema,
-} from "./types.ts";
+import { BackgroundColor } from '@/utils/const/constants.ts';
+
+import { ActionType, BackgroundListActionType, BackgroundListSchema } from './types.ts';
 
 const initialState: BackgroundListSchema = {
-  backgroundPickerList: [...BackgroundColor.slice(0, 5)],
   backgroundModalList: [...BackgroundColor.slice(0, 9)],
   backgroundMoreModalLIst: [...BackgroundColor.slice(9, 18)],
+  backgroundPickerList: [...BackgroundColor.slice(0, 5)],
 };
 
 export const backgroundListReducer = (

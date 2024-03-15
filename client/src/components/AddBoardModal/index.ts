@@ -1,1 +1,1 @@
-export * from "./AddBoardModal.tsx";
+export { AddBoardModal } from './AddBoardModal.tsx';

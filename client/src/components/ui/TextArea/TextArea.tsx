@@ -1,38 +1,22 @@
-import { cls } from "@/utils/helpers";
-import {
-  ChangeEvent,
-  InputHTMLAttributes,
-  memo,
-  useEffect,
-  useState,
-} from "react";
-import styles from "./TextArea.module.scss";
+import { cls } from '@/utils/helpers';
+import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useState } from 'react';
 
-type HTMLTextAreaProps = Omit<
-  InputHTMLAttributes<HTMLTextAreaElement>,
-  "value" | "onChange"
->;
+import styles from './TextArea.module.scss';
+
+type HTMLTextAreaProps = Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'onChange' | 'value'>;
 
 interface TextareaProps extends HTMLTextAreaProps {
+  autoFocus?: boolean;
   className?: string;
-  value?: string;
+  maxLength?: number;
   onChange?: (value: string) => void;
   placeholder?: string;
-  autoFocus?: boolean;
-  maxLength?: number;
+  value?: string;
 }
 
 export const TextArea = memo((props: TextareaProps) => {
-  const {
-    className,
-    value,
-    onChange,
-    placeholder,
-    autoFocus,
-    maxLength,
-    ...otherProps
-  } = props;
-  const [textareaValue, setTextAreaValue] = useState<string>("");
+  const { autoFocus, className, maxLength, onChange, placeholder, value, ...otherProps } = props;
+  const [textareaValue, setTextAreaValue] = useState<string>('');
 
   useEffect(() => {
     // Изменяем размер textarea в зависимости от его содержимого
@@ -44,23 +28,23 @@ export const TextArea = memo((props: TextareaProps) => {
   };
 
   const adjustTextareaSize = () => {
-    const textarea = document.getElementById("textArea");
+    const textarea = document.getElementById('textArea');
 
     if (textarea) {
-      textarea.style.height = "32px"; // Сначала сбрасываем высоту
-      textarea.style.height = textarea.scrollHeight + "px";
+      textarea.style.height = '32px'; // Сначала сбрасываем высоту
+      textarea.style.height = textarea.scrollHeight + 'px';
     }
   };
 
   return (
     <textarea
+      autoFocus={autoFocus}
       className={cls([styles.TextArea, className])}
-      id={"textArea"}
-      value={value}
+      id={'textArea'}
+      maxLength={maxLength}
       onChange={onChangeHandler}
       placeholder={placeholder}
-      autoFocus={autoFocus}
-      maxLength={maxLength}
+      value={value}
       {...otherProps}
     />
   );

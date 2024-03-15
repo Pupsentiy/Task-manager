@@ -3,42 +3,43 @@ import { cls } from '@/utils/helpers';
 import {
   type ChangeEvent,
   type InputHTMLAttributes,
-  memo,
   ReactNode,
+  memo,
   useEffect,
   useRef,
 } from 'react';
+
 import styles from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
 export type InputColor = 'primary' | 'secondary' | 'tertiary';
 
 interface InputProps extends HTMLInputProps {
-  className?: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  autofocus?: boolean;
-  color?: InputColor;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
+  autofocus?: boolean;
+  className?: string;
+  color?: InputColor;
   error?: string;
   label?: string;
+  onChange?: (value: string) => void;
+  value?: string;
 }
 
 export const Input = memo((props: InputProps) => {
   const ref = useRef<HTMLInputElement>(null);
   const {
-    className,
-    type = 'text',
-    value,
-    onChange,
-    placeholder,
-    autofocus,
-    color = 'primary',
     addonLeft,
     addonRight,
+    autofocus,
+    className,
+    color = 'primary',
     error,
     label,
+    onChange,
+    placeholder,
+    type = 'text',
+    value,
     ...otherProps
   } = props;
 
@@ -56,11 +57,11 @@ export const Input = memo((props: InputProps) => {
       {addonLeft && <div className={styles.addonLeft}>{addonLeft}</div>}
       <input
         className={cls([styles[color]])}
+        onChange={onChangeHandler}
+        placeholder={placeholder}
         ref={ref}
         type={type}
         value={value}
-        placeholder={placeholder}
-        onChange={onChangeHandler}
         {...otherProps}
       />
       {addonRight && <div className={styles.addonRight}>{addonRight}</div>}
@@ -70,9 +71,9 @@ export const Input = memo((props: InputProps) => {
   if (error || label) {
     return (
       <div className={styles.wrapper}>
-        <Text text={label} size={'m'} />
+        <Text size={'m'} text={label} />
         {input}
-        <Text className={styles.input_error} text={error} size={'xs'} />
+        <Text className={styles.input_error} size={'xs'} text={error} />
       </div>
     );
   }

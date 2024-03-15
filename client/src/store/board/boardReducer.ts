@@ -1,13 +1,11 @@
-import { generateCode } from "@/utils/helpers";
-import { ActionType, BoardActionType, BoardSchema } from "./types";
+import { generateCode } from '@/utils/helpers';
+
+import { ActionType, BoardActionType, BoardSchema } from './types';
 
 const initialState: BoardSchema = {
   board: [],
 };
-export const boardReducer = (
-  state = initialState,
-  action: BoardActionType,
-): BoardSchema => {
+export const boardReducer = (state = initialState, action: BoardActionType): BoardSchema => {
   switch (action.type) {
     case ActionType.ADD_BOARD:
       return {
@@ -15,24 +13,24 @@ export const boardReducer = (
         board: [
           ...state.board,
           {
-            id: String(generateCode()),
-            title: action.payload.title,
             backdrop: action.payload.backdrop,
             column: [],
+            id: String(generateCode()),
+            title: action.payload.title,
           },
         ],
       };
     case ActionType.ADD_COLUMN:
       return {
         ...state,
-        board: state.board.map((board) => {
+        board: state.board.map(board => {
           if (board.id === action.payload.boardId) {
             board.column = [
               ...board.column,
               {
                 id: String(generateCode()),
-                title: action.payload.title,
                 task: [],
+                title: action.payload.title,
               },
             ];
           }

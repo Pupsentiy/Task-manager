@@ -1,22 +1,22 @@
-import { Button } from "@/components/ui/Button";
-import { CloseIcon } from "@/components/ui/Icons";
-import { Text } from "@/components/ui/Text";
-import { cls } from "@/utils/helpers";
-import { memo, ReactNode } from "react";
-import styles from "./ModalHeader.module.scss";
+import { Button } from '@/components/ui/Button';
+import { CloseIcon } from '@/components/ui/Icons';
+import { Text } from '@/components/ui/Text';
+import { cls } from '@/utils/helpers';
+import { ReactNode, memo } from 'react';
+
+import styles from './ModalHeader.module.scss';
 
 interface ModalHeaderProps {
-  className?: string;
-  title?: string;
   addonLeft?: ReactNode;
+  className?: string;
+  isVisibleMoreColor?: boolean;
   onClose?: () => void;
   onHide?: () => void;
-  isVisibleMoreColor?: boolean;
+  title?: string;
 }
 
 export const ModalHeader = memo((props: ModalHeaderProps) => {
-  const { className, title, addonLeft, onClose, onHide, isVisibleMoreColor } =
-    props;
+  const { addonLeft, className, isVisibleMoreColor, onClose, onHide, title } = props;
   return (
     <div className={cls([styles.ModalHeader, className])}>
       {addonLeft && isVisibleMoreColor && (
@@ -24,13 +24,8 @@ export const ModalHeader = memo((props: ModalHeaderProps) => {
           {addonLeft}
         </Button>
       )}
-      <Text title={title} bold size={"xs"} className={styles.title_modal} />
-      <Button
-        className={styles.button_close}
-        onClick={onClose}
-        size={"xs"}
-        radius={"r2"}
-      >
+      <Text bold className={styles.title_modal} size={'xs'} title={title} />
+      <Button className={styles.button_close} onClick={onClose} radius={'r2'} size={'xs'}>
         <CloseIcon className={styles.icon_close} />
       </Button>
     </div>

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 import styles from './LogoIcon.module.scss';
 
 export const LogoIcon = memo(() => (

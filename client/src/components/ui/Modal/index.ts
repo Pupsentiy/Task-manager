@@ -1,1 +1,1 @@
-export * from "./Modal.tsx";
+export * from './Modal.tsx';

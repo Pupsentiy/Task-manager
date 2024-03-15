@@ -7,11 +7,5 @@
   "printWidth": 100,
   "tabWidth": 2,
   "arrowParens": "avoid",
-  "endOfLine": "lf",
-  "importOrder": [
-    "^@components/(.*)$",
-    "^[./]"
-  ],
-  "sortImports.pathOrdering": "all",
-  "importOrderSortSpecifiers": true
+  "endOfLine": "lf"
 }

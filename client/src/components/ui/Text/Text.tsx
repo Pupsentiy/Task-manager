@@ -1,38 +1,39 @@
 import { cls } from '@/utils/helpers';
 import { memo } from 'react';
+
 import styles from './Text.module.scss';
 
-export type TextAlign = 'right' | 'left' | 'center';
+export type TextAlign = 'center' | 'left' | 'right';
 
-export type TextSize = 'xs' | 's' | 'm' | 'l';
+export type TextSize = 'l' | 'm' | 's' | 'xs';
 
 interface TextProps {
-  className?: string;
-  title?: string;
-  text?: string;
   align?: TextAlign;
-  size?: TextSize;
   bold?: boolean;
+  className?: string;
+  size?: TextSize;
+  text?: string;
+  title?: string;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4';
 
 const mapSizeToClass: Record<TextSize, string> = {
-  xs: styles.size_xs,
-  s: styles.size_s,
-  m: styles.size_m,
   l: styles.size_l,
+  m: styles.size_m,
+  s: styles.size_s,
+  xs: styles.size_xs,
 };
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-  xs: 'h4',
-  s: 'h3',
-  m: 'h2',
   l: 'h1',
+  m: 'h2',
+  s: 'h3',
+  xs: 'h4',
 };
 
 export const Text = memo(
-  ({ className, title, text, align = 'left', size = 'm', bold }: TextProps) => {
+  ({ align = 'left', bold, className, size = 'm', text, title }: TextProps) => {
     const HeaderTag = mapSizeToHeaderTag[size];
     const sizeClass = mapSizeToClass[size];
 

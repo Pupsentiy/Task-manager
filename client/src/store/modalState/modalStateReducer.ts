@@ -1,4 +1,4 @@
-import { ActionType, ModalStateActionType, ModalStateSchema } from "./types";
+import { ActionType, ModalStateActionType, ModalStateSchema } from './types';
 
 const initialState: ModalStateSchema = {
   addBoardModal: false,

@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 export interface ModalStateSchema {
   addBoardModal: boolean;
@@ -6,10 +6,10 @@ export interface ModalStateSchema {
 }
 
 export enum ActionType {
-  SET_OPEN_ADD_BOARD_MODAL = "SET_OPEN_ADD_BOARD_MODAL",
-  SET_CLOSE_ADD_BOARD_MODAL = "SET_CLOSE_ADD_BOARD_MODAL",
-  SET_OPEN_BOARD_BACKGROUND_MODAL = "SET_OPEN_BOARD_BACKGROUND_MODAL",
-  SET_CLOSE_BOARD_BACKGROUND_MODAL = "SET_CLOSE_BOARD_BACKGROUND_MODAL",
+  SET_CLOSE_ADD_BOARD_MODAL = 'SET_CLOSE_ADD_BOARD_MODAL',
+  SET_CLOSE_BOARD_BACKGROUND_MODAL = 'SET_CLOSE_BOARD_BACKGROUND_MODAL',
+  SET_OPEN_ADD_BOARD_MODAL = 'SET_OPEN_ADD_BOARD_MODAL',
+  SET_OPEN_BOARD_BACKGROUND_MODAL = 'SET_OPEN_BOARD_BACKGROUND_MODAL',
 }
 
 export interface SetOpenAddBoardModal extends Action {
@@ -29,7 +29,7 @@ export interface SetCloseBackgroundModal extends Action {
 }
 
 export type ModalStateActionType =
-  | SetOpenAddBoardModal
   | SetCloseAddBoardModal
-  | SetOpenBackgroundModal
-  | SetCloseBackgroundModal;
+  | SetCloseBackgroundModal
+  | SetOpenAddBoardModal
+  | SetOpenBackgroundModal;

@@ -1,16 +1,15 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
-import {compose} from "redux";
+import { compose } from 'redux';
 
-declare module "*.scss" {
+declare module '*.scss' {
   const content: Record<string, string>;
   export default content;
 }
-declare module "*.svg" {
-  import React = require("react");
-  export const ReactComponent: React.FunctionComponent<
-    React.SVGProps<SVGSVGElement>
-  >;
+
+declare module '*.svg' {
+  import React = require('react');
+  export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   const src: string;
   export default src;
 }
