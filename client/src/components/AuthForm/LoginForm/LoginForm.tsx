@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/Input';
 import { cls } from '@/utils/helpers';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { memo } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import styles from './LoginForm.module.scss';
@@ -17,53 +17,58 @@ const LoginFormSchema = yup.object().shape({
   password: yup.string().min(8).required(),
 });
 
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
 export const LoginForm = memo(({ className }: LoginFormProps) => {
-  const { control, handleSubmit } = useForm({
+  const { control, formState, handleSubmit } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
     resolver: yupResolver(LoginFormSchema),
   });
 
-  const onSubmit = (e: any, data: any) => {
-    console.log(e);
+  const onSubmit: SubmitHandler<LoginForm> = (data: any) => {
     console.log(data);
   };
-
+  console.log(formState);
   return (
     <div className={cls([styles.LoginForm, className])}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
           name="email"
-          render={({ formState: { errors } }) => (
+          render={({ field, formState: { errors } }) => (
             <Input
               className={styles.input}
               color={'secondary'}
               error={errors.email?.message}
-              name={'email'}
               placeholder={'Введите адрес электронной почты'}
               type={'email'}
+              {...field}
             />
           )}
-          rules={{
-            required: true,
-          }}
         />
         <Controller
           control={control}
           name="password"
-          render={({ formState: { errors } }) => (
+          render={({ field, formState: { errors } }) => (
             <Input
               className={styles.input}
               color={'secondary'}
               error={errors.password?.message}
               placeholder={'Введите пароль'}
               type={'password'}
+              {...field}
             />
           )}
-          rules={{
-            required: true,
-          }}
         />
-        <Button className={styles.signIn_button}>Войти</Button>
+        <Button className={styles.signIn_button} type={'submit'}>
+          Войти
+        </Button>
         <hr className={styles.bottom_form_separator} />
       </form>
     </div>
