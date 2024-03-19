@@ -1,13 +1,6 @@
 import { Text } from '@/components/ui/Text';
 import { cls } from '@/utils/helpers';
-import {
-  type ChangeEvent,
-  type InputHTMLAttributes,
-  ReactNode,
-  memo,
-  useEffect,
-  useRef,
-} from 'react';
+import { type ChangeEvent, type InputHTMLAttributes, ReactNode, forwardRef } from 'react';
 
 import styles from './Input.module.scss';
 
@@ -26,12 +19,11 @@ interface InputProps extends HTMLInputProps {
   value?: string;
 }
 
-export const Input = memo((props: InputProps) => {
-  const ref = useRef<HTMLInputElement>(null);
+export const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) => {
+  // const inputRef = useRef<HTMLInputElement>(null);
   const {
     addonLeft,
     addonRight,
-    autofocus,
     className,
     color = 'primary',
     error,
@@ -43,11 +35,11 @@ export const Input = memo((props: InputProps) => {
     ...otherProps
   } = props;
 
-  useEffect(() => {
-    if (autofocus) {
-      ref.current?.focus();
-    }
-  }, [autofocus]);
+  // useEffect(() => {
+  //   if (autofocus) {
+  //     inputRef.current?.focus();
+  //   }
+  // }, [autofocus]);
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
