@@ -17,6 +17,9 @@ module.exports = {
     'prettier',
     '@typescript-eslint',
   ],
+  globals:{
+    __API__: true
+  },
   rules: {
     'prettier/prettier': [
       'warn',

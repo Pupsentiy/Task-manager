@@ -1,3 +1,5 @@
-import { lazy } from 'react';
+import { FC, lazy } from 'react';
 
-export const AuthPageAsync = lazy(async () => await import('./AuthPage.tsx'));
+import { AuthPageProps } from './AuthPage.tsx';
+
+export const AuthPageAsync = lazy<FC<AuthPageProps>>(async () => await import('./AuthPage.tsx'));

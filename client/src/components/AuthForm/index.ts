@@ -1,4 +1,4 @@
-import { LoginForm } from './LoginForm/LoginForm.tsx';
-import { SignUpForm } from './SignUpForm/SignUpForm.tsx';
+import { LoginFormAsync } from './LoginForm/LoginForm.async.tsx';
+import { SignUpFormAsync } from './SignUpForm/SignUpForm.async.tsx';
 
-export { LoginForm, SignUpForm };
+export { LoginFormAsync as LoginForm, SignUpFormAsync as SignUpForm };

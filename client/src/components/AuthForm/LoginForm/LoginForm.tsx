@@ -1,16 +1,19 @@
+import { routes } from '@/app/providers/router';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { cls } from '@/utils/helpers';
+import {
+  getLoginByEmailError,
+  getLoginByEmailIsLoading,
+} from '@/store/authByEmail/getLoginByEmailSelectors.ts';
+import { loginByEmail } from '@/store/authByEmail/loginByEmail.ts';
+import { getUserData } from '@/store/user/getUserSelectors.ts';
+import { useAppDispatch } from '@/utils/hooks';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { memo } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-
-import styles from './LoginForm.module.scss';
-
-interface LoginFormProps {
-  className?: string;
-}
 
 const LoginFormSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -22,8 +25,13 @@ interface LoginForm {
   password: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
-  const { control, formState, handleSubmit } = useForm({
+const LoginForm = memo(() => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const error = useSelector(getLoginByEmailError);
+  const isLoading = useSelector(getLoginByEmailIsLoading);
+  const userData = useSelector(getUserData);
+  const { control, handleSubmit, setError } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -31,46 +39,51 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     resolver: yupResolver(LoginFormSchema),
   });
 
-  const onSubmit: SubmitHandler<LoginForm> = (data: any) => {
-    console.log(data);
-  };
-  console.log(formState);
+  useEffect(() => {
+    if (error) setError('email', { message: error, type: '404' });
+    if (userData) navigate(routes.getRouteBoards());
+  }, [dispatch, error, navigate, setError, userData]);
+
+  const onSubmit: SubmitHandler<LoginForm> = useCallback(
+    (data: LoginForm) => {
+      dispatch(loginByEmail(data));
+    },
+    [dispatch],
+  );
+
   return (
-    <div className={cls([styles.LoginForm, className])}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          control={control}
-          name="email"
-          render={({ field, formState: { errors } }) => (
-            <Input
-              className={styles.input}
-              color={'secondary'}
-              error={errors.email?.message}
-              placeholder={'Введите адрес электронной почты'}
-              type={'email'}
-              {...field}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="password"
-          render={({ field, formState: { errors } }) => (
-            <Input
-              className={styles.input}
-              color={'secondary'}
-              error={errors.password?.message}
-              placeholder={'Введите пароль'}
-              type={'password'}
-              {...field}
-            />
-          )}
-        />
-        <Button className={styles.signIn_button} type={'submit'}>
-          Войти
-        </Button>
-        <hr className={styles.bottom_form_separator} />
-      </form>
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        control={control}
+        name="email"
+        render={({ field, formState: { errors } }) => (
+          <Input
+            color={'secondary'}
+            error={errors.email?.message}
+            placeholder={'Введите адрес электронной почты'}
+            type={'email'}
+            {...field}
+          />
+        )}
+      />
+      <Controller
+        control={control}
+        name="password"
+        render={({ field, formState: { errors } }) => (
+          <Input
+            color={'secondary'}
+            error={errors.password?.message}
+            placeholder={'Введите пароль'}
+            type={'password'}
+            {...field}
+          />
+        )}
+      />
+      <Button color={'sign'} disabled={isLoading} type={'submit'}>
+        Войти
+      </Button>
+    </form>
   );
 });
+
+export default LoginForm;

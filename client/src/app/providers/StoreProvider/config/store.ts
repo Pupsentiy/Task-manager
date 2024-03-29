@@ -1,48 +1,33 @@
-import { backgroundListReducer } from '@/store/backgroundList/backgroundListReducer.ts';
-import { boardReducer } from '@/store/board/boardReducer.ts';
-import { boardCreateReducer } from '@/store/boardCreate/boardCreateReducer.ts';
-import { columnCreateReducer } from '@/store/columnCreate/columnCreateReducer.ts';
-import { modalStateReducer } from '@/store/modalState/modalStateReducer.ts';
-import { loadState, saveState } from '@/utils/helpers';
-import throttle from 'lodash.throttle';
-import {
-  AnyAction,
-  Reducer,
-  applyMiddleware,
-  combineReducers,
-  compose,
-  legacy_createStore as createStore,
-} from 'redux';
-import thunk, { ThunkDispatch } from 'redux-thunk';
+import { loginReducer } from '@/store/authByEmail/loginSlice.ts';
+import { signUpReducer } from '@/store/signUp/signUpSlice.ts';
+import { userReducer } from '@/store/user/userSlice.ts';
+import { $api } from '@/utils/api/api.ts';
+import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 
-import { StateSchema } from './StateSchema.ts';
+import { StateSchema, ThunkExtraArg } from './StateSchema.ts';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const rootReducer: Reducer<StateSchema> = combineReducers<StateSchema>({
-  backgroundList: backgroundListReducer,
-  board: boardReducer,
-  boardCreate: boardCreateReducer,
-  columnCreate: columnCreateReducer,
-  modalState: modalStateReducer,
-});
+export function createReduxStore(initialState?: StateSchema) {
+  const rootReducers: ReducersMapObject<StateSchema> = {
+    loginForm: loginReducer,
+    signUp: signUpReducer,
+    user: userReducer,
+  };
 
-const persistedState = loadState('state');
-export const store = createStore(
-  rootReducer,
-  persistedState,
-  composeEnhancers(applyMiddleware(thunk)),
-);
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+  };
 
-store.subscribe(
-  throttle(() => {
-    saveState(
-      {
-        board: store.getState().board,
-      },
-      'state',
-    );
-  }, 1000),
-);
+  const store = configureStore({
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: extraArg,
+        },
+      }),
+    preloadedState: initialState,
+    reducer: rootReducers,
+  });
+  return store;
+}
 
-export type RootState = ReturnType<typeof store.getState>;
-export type TypedDispatch = ThunkDispatch<RootState, never, AnyAction>;
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
